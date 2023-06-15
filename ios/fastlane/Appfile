@@ -1,0 +1,25 @@
+app_identifier "" # The bundle identifier of your app
+apple_id "" # Your Apple email address
+
+# You can uncomment any of the lines below and add your own
+# team selection in case you're in multiple teams
+# team_name "Felix Krause"
+# team_id "Q2CBPJ58CA"
+
+for_lane :development do
+  app_identifier "com.example.flutterTemplate.dev"
+  apple_id ""
+  team_id "" # Add team_id when use
+end
+
+for_lane :staging do
+  app_identifier "com.example.flutterTemplate.stg"
+  apple_id ""
+  team_id "" # Add team_id when use
+end
+
+for_lane :production do
+  app_identifier "com.example.flutterTemplate"
+  apple_id ""
+  team_id "" # Add team_id when use
+end

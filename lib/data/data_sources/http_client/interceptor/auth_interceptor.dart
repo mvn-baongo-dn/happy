@@ -200,7 +200,7 @@ class AuthInterceptor extends QueuedInterceptorsWrapper {
   bool _isForceLogout(response) {
     final dataError = ApiResponseModel.fromJson(
       response.data is String
-          ? jsonDecode(response.data as String) as Map<String,dynamic>
+          ? jsonDecode(response.data as String) as Map<String, dynamic>
           : response.data as Map<String, dynamic>,
       (p0) => null,
     );

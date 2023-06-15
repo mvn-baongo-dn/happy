@@ -1,0 +1,161 @@
+fastlane_version "2.0.0"
+
+PROVISIONING_PROFILE_DEV = "Adhoc Dev" # Update file name provisioning profile when use
+PROVISIONING_PROFILE_STG = "Adhoc Stg" # Update file name provisioning profile when use
+PROVISIONING_PROFILE_PROD = "Adhoc Prod" # Update file name provisioning profile when use
+
+####### Use extension IOS #######
+# PROVISIONING_PROFILE_EXT_DEV = "Adhoc Dev Notification Service"
+# PROVISIONING_PROFILE_EXT_STG = "Adhoc Stg Notification Service"
+# PROVISIONING_PROFILE_EXT_PROD = "Adhoc Prod Notification Service"
+
+before_all do
+  skip_docs
+  setup_ci
+end
+
+lane :development do
+  identifier = CredentialsManager::AppfileConfig.try_fetch_value(:app_identifier)
+  # identifier_ext = "#{identifier}.notification-service"
+  options = {
+    certificate_path: 'fastlane/cert/development/boilerplate_ios_distribution.p12', # Update file name .p12 when use
+    provision_path: 'cert/development/*.mobileprovision',
+    certificate_password: ENV['IOS_CERTIFICATES_PASSWORD'],
+    keychain_password: ENV['IOS_KEYCHAIN_PASSWORD']
+  }
+  setup_provisioning_profiles(options)
+  build_app(
+    scheme: "development",
+    export_method: "enterprise",
+    export_options: {
+      identifier => PROVISIONING_PROFILE_DEV,
+      # identifier_ext => PROVISIONING_PROFILE_EXT_DEV,
+    },
+    clean: true,
+  )
+  if is_ci?
+    deploy_to_firebase(
+      app_id: ENV['FIREBASE_APP_ID_IOS'],
+      firebase_token: ENV['FIREBASE_TOKEN'],
+      groupTester: "QC, DEV, BA"
+    )
+  end
+end
+
+lane :staging do
+  identifier = CredentialsManager::AppfileConfig.try_fetch_value(:app_identifier)
+  # identifier_ext = "#{identifier}.notification-service"
+  options = {
+    certificate_path: 'fastlane/cert/staging/boilerplate_ios_distribution.p12', # Update file name .p12 when use
+    provision_path: 'cert/staging/*.mobileprovision',
+    certificate_password: ENV['IOS_CERTIFICATES_PASSWORD'],
+    keychain_password: ENV['IOS_KEYCHAIN_PASSWORD']
+  }
+  setup_provisioning_profiles(options)
+  build_app(
+    scheme: "staging",
+    export_method: "enterprise",
+    export_options: {
+      identifier => PROVISIONING_PROFILE_STG,
+      # identifier_ext => PROVISIONING_PROFILE_EXT_STG,
+    },
+  )
+  if is_ci?
+    deploy_to_firebase(
+      app_id: ENV['FIREBASE_APP_ID_IOS'],
+      firebase_token: ENV['FIREBASE_TOKEN'],
+      groupTester: "QC, DEV, BA"
+    )
+  end
+end
+
+lane :production do
+  identifier = CredentialsManager::AppfileConfig.try_fetch_value(:app_identifier)
+  # identifier_ext = "#{identifier}.notification-service"
+  options = {
+    certificate_path: 'fastlane/cert/production/boilerplate_ios_distribution.p12', # Update file name .p12 when use
+    provision_path: 'cert/production/*.mobileprovision',
+    certificate_password: ENV['IOS_CERTIFICATES_PASSWORD'],
+    keychain_password: ENV['IOS_KEYCHAIN_PASSWORD']
+  }
+  setup_provisioning_profiles(options)
+  build_app(
+    scheme: "production",
+    export_method: "ad-hoc",
+    export_options: {
+      identifier => PROVISIONING_PROFILE_PROD,
+      # identifier_ext => PROVISIONING_PROFILE_EXT_PROD,
+    },
+  )
+  if is_ci?
+    deploy_to_firebase(
+      app_id: ENV['FIREBASE_APP_ID_IOS_PROD'],
+      firebase_token: ENV['FIREBASE_TOKEN'],
+      groupTester: "QC, DEV, BA"
+    )
+  end
+end
+
+after_all do |lane|
+  # This block is called, only if the executed lane was successful
+  # slack({
+  #   message: "Successfully deployed new App Update for [App](http://link.com).",
+  #   success: true,
+  #   channel: 'development'
+  # })
+end
+
+error do |lane, exception|
+  # Something bad happened
+end
+
+# options: certificate_path, provisioning_path, certificate_password, keychain_password
+private_lane :setup_provisioning_profiles do |options|
+  next unless Helper.ci?
+
+  `curl -OL https://developer.apple.com/certificationauthority/AppleWWDRCA.cer`
+
+  create_keychain(
+    name: "boilerplate_keychain", # Update name keychain when use
+    default_keychain: true,
+    unlock: true,
+    timeout: 3600,
+    lock_when_sleeps: true,
+    password: options[:keychain_password]
+  )
+
+  import_certificate(
+    keychain_name: "boilerplate_keychain", # Update name keychain when use
+    certificate_path: options[:certificate_path],
+    certificate_password: options[:certificate_password],
+    keychain_password: options[:keychain_password]
+
+  )
+  import_certificate(
+    keychain_name: "boilerplate_keychain", # Update name keychain when use
+    certificate_path: 'fastlane/AppleWWDRCA.cer',
+    keychain_password: options[:keychain_password]
+  )
+
+  Dir.glob(options[:provision_path]).each { |filename|
+    puts filename
+    FastlaneCore::ProvisioningProfile.install(filename)
+  }
+
+end
+
+private_lane :deploy_to_firebase do |options|
+  last_git_commit = last_git_commit()
+  build_number = get_build_number()
+  release_note = "Commit: #{last_git_commit[:commit_hash]}\n" \
+                 "Message: #{last_git_commit[:message]}\n" \
+                 "Build: #{build_number}"
+  # firebase
+  firebase_app_distribution(
+    app: "#{options[:app_id]}",
+    release_notes: release_note.gsub(/^$\n/, ''),
+    firebase_cli_token: "#{options[:firebase_token]}",
+    groups: options[:groupTester],
+    debug: true
+  )
+end

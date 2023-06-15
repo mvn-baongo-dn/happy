@@ -22,7 +22,7 @@ class LoginButton extends StatelessWidget {
         builder: (context, state) => ElevatedButton(
           onPressed: state.isValidButton ? onPressed : null,
           child: Text(
-           '',
+            '',
           ),
         ),
       );

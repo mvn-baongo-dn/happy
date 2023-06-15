@@ -17,9 +17,7 @@ class ErrorHelper {
       if (response != null) {
         try {
           errorMessage = response.data is String
-         
               ? jsonDecode(response.data as String)['error'] as String
-             
               : response.data['error'] as String;
         } catch (_) {
           errorMessage = error.response?.statusMessage ?? unknownError;

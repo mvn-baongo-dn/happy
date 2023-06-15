@@ -4,7 +4,6 @@ import 'dart:io';
 
 import 'package:dio/dio.dart';
 
-
 class RetryOnConnectionChangeInterceptor extends Interceptor {
   RetryOnConnectionChangeInterceptor({
     required this.dio,
@@ -26,8 +25,7 @@ class RetryOnConnectionChangeInterceptor extends Interceptor {
 
   bool _shouldRetryOnHttpException(DioError err) =>
       err.type == DioErrorType.other &&
-      (err.error is HttpException &&
-              err.message.contains('') ||
+      (err.error is HttpException && err.message.contains('') ||
           err.message.contains(''));
 
   Future<Response> _requestRetry(RequestOptions requestOptions) async =>
@@ -54,5 +52,5 @@ class RetryOnConnectionChangeInterceptor extends Interceptor {
           responseType: requestOptions.responseType,
           validateStatus: requestOptions.validateStatus,
         ),
-      ) ;
+      );
 }
