@@ -1,4 +1,5 @@
-import 'package:happy_app/data/models/account/login/login_request_model.dart';
+
+import 'package:happy/data/models/account/login/login_request_model.dart';
 import 'package:test/test.dart';
 
 void main() {
