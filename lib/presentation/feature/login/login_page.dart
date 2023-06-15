@@ -44,7 +44,7 @@ class _LoginPageState extends BasePageState<LoginPage, LoginPresenter>
               EmailFormField(
                 presenter: presenter,
               ),
-              const SizedBox(height: 8),
+              const SizedBox(height: 10),
               PasswordFormField(
                 presenter: presenter,
               ),
