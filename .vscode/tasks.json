@@ -1,0 +1,17 @@
+{
+    "version": "2.0.0",
+    "tasks": [
+        {
+            "label": "Run Custom Lint",
+            "command": "fvm flutter pub run custom_lint",
+            "type": "shell",
+            "presentation": {
+                "reveal": "always",
+                "panel": "new",
+            },
+            "runOptions": {
+                "runOn": "folderOpen"
+            },
+        }
+    ]
+}

@@ -1,6 +1,6 @@
-import 'package:happy/app/app.dart';
-import 'package:happy/bootstrap.dart';
+import './main_common.dart';
+import './utilities/helpers/app_helper/app_flavor_helper.dart';
 
 void main() {
-  bootstrap(() => const App());
+  mainCommon(AppFlavor.production);
 }

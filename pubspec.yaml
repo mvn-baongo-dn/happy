@@ -5,22 +5,61 @@ publish_to: none
 
 environment:
   sdk: ">=3.0.0 <4.0.0"
+  
 
 dependencies:
   bloc: ^8.1.2
   flutter:
     sdk: flutter
-  flutter_bloc: ^8.1.3
+ 
   flutter_localizations:
     sdk: flutter
+  
+   # UI
+  flutter_svg: ^1.1.6
+  responsive_framework: ^0.2.0
+
+  # Net
+  dio: ^4.0.6
+  retrofit: ^3.3.1
+  connectivity_plus: ^3.0.2
+  universal_html: ^2.0.8
+
+  # Utility
+  device_info_plus: ^8.0.0
+  package_info_plus: ^3.0.2
+
+  # Persistence
+  shared_preferences: ^2.0.15
+
+  # Architecture
+  freezed: ^2.3.0
+  freezed_annotation: ^2.2.0
+  get_it: ^7.2.0
+  json_annotation: ^4.7.0
+  flutter_bloc: ^8.1.3
   intl: ^0.18.0
+
+  # Web
+  url_strategy: ^0.2.0
+  auto_route: ^5.0.4
+  visibility_detector: ^0.3.3
 
 dev_dependencies:
   bloc_test: ^9.1.2
   flutter_test:
     sdk: flutter
   mocktail: ^0.3.0
-  very_good_analysis: ^5.0.0
+  # very_good_analysis: ^5.0.0
+  build_runner: ^2.3.2
+  auto_route_generator: ^5.0.3
+  retrofit_generator: ^4.2.0
+  json_serializable: ^6.5.4
+  flutter_lints: ^2.0.1
+  custom_lint: ^0.0.16
+  custom_lint_builder: ^0.0.16
+  custom_lint_happy:
+    path: ./custom_lint
 
 flutter:
   uses-material-design: true
