@@ -48,7 +48,7 @@ class _LoginPageState extends BasePageState<LoginPage, LoginPresenter>
               PasswordFormField(
                 presenter: presenter,
               ),
-              const SizedBox(height: 16),
+              const SizedBox(height: 11),
               LoginButton(
                 presenter: presenter,
                 onPressed: _onPressLogin,
