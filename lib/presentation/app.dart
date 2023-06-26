@@ -63,7 +63,7 @@ class _AppState extends State<App> with WidgetsBindingObserver {
             GlobalCupertinoLocalizations.delegate,
           ],
           supportedLocales: SupportLocale.support,
-          theme: getAppTheme(Brightness.light),
+          theme: getAppTheme(Brightness.dark),
           builder: (context, widget) => getResponsiveWrapper(context, widget),
         ),
       );

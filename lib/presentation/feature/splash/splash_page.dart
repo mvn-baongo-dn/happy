@@ -52,13 +52,7 @@ extension _SplashPageBehavior on _SplashPageState {
 
   void _handleCheckingTokenSuccess(String? value) {
     AutoRouter.of(context).replace(
-      value == null
-          ? const LoginRoute()
-          : const HomeRoute(
-              children: [
-                TodosWrapRoute(),
-              ],
-            ),
+      value == null ? const LoginRoute() : const HomeRoute(),
     );
   }
 }

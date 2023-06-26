@@ -41,9 +41,9 @@ class ColorsDefine {
 
   static const colorsDark = ColorsDefine(
     blueMain: Colors.blue,
-    background: Colors.black54,
+    background: Color(0xFF1E1F20),
     text: Colors.white,
-    textLighter: Color(0xFF637180),
+    textLighter: Color(0x161819),
     primary: Color(0xFF056EDB),
   );
 }

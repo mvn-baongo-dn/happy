@@ -1,29 +1,35 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_bloc/flutter_bloc.dart';
-
-import '../../../components/custom_text_form_field.dart';
-import '../bloc/login_presenter.dart';
-import '../bloc/login_state.dart';
 
 class PasswordFormField extends StatelessWidget {
   const PasswordFormField({
-    required this.presenter,
+    required this.passwordFocusNode,
+    required this.passwordController,
     Key? key,
   }) : super(key: key);
 
-  final LoginPresenter presenter;
+  final FocusNode passwordFocusNode;
+  final TextEditingController passwordController;
 
   @override
-  Widget build(BuildContext context) => BlocBuilder<LoginPresenter, LoginState>(
-        bloc: presenter,
-        buildWhen: (previous, current) => previous.password != current.password,
-        builder: (context, state) => CustomTextFormField(
-          hintText: '',
-          labelText: '',
-          isPasswordField: true,
-          keyboardType: TextInputType.text,
-          errorText: state.password.errorText,
-          onChanged: presenter.onPasswordChanged,
+  Widget build(BuildContext context) => Container(
+        decoration: BoxDecoration(
+          color: Colors.grey[200],
+          borderRadius: BorderRadius.circular(8),
+        ),
+        padding: const EdgeInsets.symmetric(
+          horizontal: 16,
+          vertical: 8,
+        ),
+        child: TextField(
+          focusNode: passwordFocusNode,
+          controller: passwordController,
+          decoration: const InputDecoration(
+            border: InputBorder.none,
+            hintText: "Password",
+          ),
+          obscureText: true,
+          style: Theme.of(context).textTheme.bodyMedium,
+          onChanged: (value) {},
         ),
       );
 }
