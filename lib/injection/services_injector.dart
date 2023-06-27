@@ -9,7 +9,6 @@ import '../data/data_sources/http_client/interceptor/retry_interceptor.dart';
 import '../data/data_sources/local_storage/share_preference_data_source.dart';
 import '../presentation/core/app_lifecycle/app_lifecycle.dart';
 import '../presentation/routes/app_router.dart';
-import '../presentation/routes/guards/home_guard.dart';
 import '../utilities/helpers/app_helper/app_flavor_helper.dart';
 import '../utilities/helpers/logger_helper/logger.dart';
 
@@ -45,7 +44,7 @@ class ServiceInjector {
 
     // Router
     injector.registerLazySingleton<AppRouter>(
-      () => AppRouter(homeGuard: HomeGuard()),
+      () => AppRouter(),
     );
 
     // AppLifecycle

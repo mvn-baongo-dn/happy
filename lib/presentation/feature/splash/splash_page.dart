@@ -2,11 +2,10 @@ import 'package:auto_route/auto_route.dart';
 import 'package:flutter/material.dart';
 
 import './bloc/splash_presenter.dart';
-import '../../../utilities/extensions/extensions.dart';
 import '../../core/base_page/base_page.dart';
 import '../../resources/resources.dart';
-import '../../routes/app_router.dart';
 
+@RoutePage()
 class SplashPage extends BasePage {
   const SplashPage({Key? key}) : super(key: key);
 
@@ -39,26 +38,20 @@ class _SplashPageState extends BasePageState<SplashPage, SplashPresenter> {
 
 extension _SplashPageBehavior on _SplashPageState {
   void _initPage() {
-    presenter
-        .checkToken()
-        .subscribeHandleError(
-          this,
-        )
-        .subscribeOnSuccess(
-          this,
-          success: _handleCheckingTokenSuccess,
-        );
+    // presenter
+    //     .checkToken()
+    //     .subscribeHandleError(
+    //       this,
+    //     )
+    //     .subscribeOnSuccess(
+    //       this,
+    //       success: _handleCheckingTokenSuccess,
+    //     );
   }
 
-  void _handleCheckingTokenSuccess(String? value) {
-    AutoRouter.of(context).replace(
-      value == null
-          ? const LoginRoute()
-          : const HomeRoute(
-              children: [
-                TodosWrapRoute(),
-              ],
-            ),
-    );
-  }
+  // void _handleCheckingTokenSuccess(String? value) {
+  //   AutoRouter.of(context).replace(
+  //     value == null ? const LoginRoute() : const HomeRoute(),
+  //   );
+  // }
 }

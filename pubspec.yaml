@@ -18,6 +18,7 @@ dependencies:
    # UI
   flutter_svg: ^1.1.6
   responsive_framework: ^0.2.0
+  rive: ^0.9.1
 
   # Net
   dio: ^4.0.6
@@ -36,14 +37,16 @@ dependencies:
   freezed: ^2.3.0
   freezed_annotation: ^2.2.0
   get_it: ^7.2.0
-  json_annotation: ^4.7.0
+  json_annotation: ^4.8.1
   flutter_bloc: ^8.1.3
-  intl: ^0.18.0
+  intl: any
 
   # Web
   url_strategy: ^0.2.0
-  auto_route: ^5.0.4
+  auto_route: ^7.2.0
   visibility_detector: ^0.3.3
+  # Image
+  cached_network_image: ^3.2.3
 
 dev_dependencies:
   bloc_test: ^9.1.2
@@ -52,7 +55,7 @@ dev_dependencies:
   mocktail: ^0.3.0
   # very_good_analysis: ^5.0.0
   build_runner: ^2.3.2
-  auto_route_generator: ^5.0.3
+  auto_route_generator: ^7.1.1 
   retrofit_generator: ^4.2.0
   json_serializable: ^6.5.4
   flutter_lints: ^2.0.1
@@ -64,3 +67,7 @@ dev_dependencies:
 flutter:
   uses-material-design: true
   generate: true
+  assets:
+     - assets/
+     - assets/images/
+  #   - images/a_dot_ham.jpeg  

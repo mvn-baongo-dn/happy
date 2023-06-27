@@ -1,28 +1,36 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_bloc/flutter_bloc.dart';
-
-import '../../../components/custom_text_form_field.dart';
-import '../bloc/login_presenter.dart';
-import '../bloc/login_state.dart';
 
 class EmailFormField extends StatelessWidget {
   const EmailFormField({
-    required this.presenter,
+    required this.emailController,
+    required this.emailFocusNode,
+    required this.function,
     Key? key,
   }) : super(key: key);
 
-  final LoginPresenter presenter;
+  final TextEditingController emailController;
+  final FocusNode emailFocusNode;
+
+  final Function(String) function;
 
   @override
-  Widget build(BuildContext context) => BlocBuilder<LoginPresenter, LoginState>(
-        bloc: presenter,
-        buildWhen: (previous, current) => previous.email != current.email,
-        builder: (context, state) => CustomTextFormField(
-          hintText: '',
-          labelText: '',
-          keyboardType: TextInputType.emailAddress,
-          errorText: state.email.errorText,
-          onChanged: presenter.onEmailChanged,
+  Widget build(BuildContext context) => Container(
+        decoration: BoxDecoration(
+          color: Colors.grey[200],
+          borderRadius: BorderRadius.circular(8),
         ),
+        padding: const EdgeInsets.symmetric(
+          horizontal: 16,
+          vertical: 8,
+        ),
+        child: TextField(
+            focusNode: emailFocusNode,
+            controller: emailController,
+            decoration: const InputDecoration(
+              border: InputBorder.none,
+              hintText: "Email",
+            ),
+            style: Theme.of(context).textTheme.bodyMedium,
+            onChanged: function),
       );
 }

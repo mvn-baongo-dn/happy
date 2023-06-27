@@ -2,6 +2,13 @@
     "@@locale": "en",
     "counterAppBarTitle": "Counter",
     "@counterAppBarTitle": {
-        "description": "Text shown in the AppBar of the Counter Page"
-    }
+        "description": "Texto mostrado en la AppBar de la página del contador"
+    },
+    "travel" :"Travel",
+    "food": "Ẩm thực",
+    "seeAll" : "See All",
+    "interestingSpaces" : " Interesting places",
+    "exploration":"Exploration",
+    "whereDoYouWantToGo" : "Where Do You Want To Go",
+    "seeMore" : "See More"
 }

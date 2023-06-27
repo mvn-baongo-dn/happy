@@ -1,148 +1,45 @@
-// **************************************************************************
-// AutoRouteGenerator
-// **************************************************************************
-
 // GENERATED CODE - DO NOT MODIFY BY HAND
 
 // **************************************************************************
-// AutoRouteGenerator
+// AutoRouterGenerator
 // **************************************************************************
-//
+
 // ignore_for_file: type=lint
+// coverage:ignore-file
 
 part of 'app_router.dart';
 
-class _$AppRouter extends RootStackRouter {
-  _$AppRouter({
-    GlobalKey<NavigatorState>? navigatorKey,
-    required this.homeGuard,
-  }) : super(navigatorKey);
-
-  final HomeGuard homeGuard;
+abstract class _$AppRouter extends RootStackRouter {
+  // ignore: unused_element
+  _$AppRouter({super.navigatorKey});
 
   @override
   final Map<String, PageFactory> pagesMap = {
-    SplashRoute.name: (routeData) {
-      return MaterialPageX<dynamic>(
-        routeData: routeData,
-        child: const SplashPage(),
-      );
-    },
-    LoginRoute.name: (routeData) {
-      return MaterialPageX<dynamic>(
-        routeData: routeData,
-        child: const LoginPage(),
-      );
-    },
     HomeRoute.name: (routeData) {
-      return MaterialPageX<dynamic>(
+      return AutoRoutePage<dynamic>(
         routeData: routeData,
         child: const HomePage(),
       );
     },
-    TodosWrapRoute.name: (routeData) {
-      return MaterialPageX<dynamic>(
+    SplashRoute.name: (routeData) {
+      return AutoRoutePage<dynamic>(
         routeData: routeData,
-        child: const EmptyRouterPage(),
+        child: const SplashPage(),
       );
     },
-    ProfileWrapRoute.name: (routeData) {
-      return MaterialPageX<dynamic>(
+    FoodTourismRoute.name: (routeData) {
+      return AutoRoutePage<dynamic>(
         routeData: routeData,
-        child: const EmptyRouterPage(),
+        child: const FoodTourismPage(),
       );
     },
-    UnknownRoute.name: (routeData) {
-      return MaterialPageX<dynamic>(
+    LoginRoute.name: (routeData) {
+      return AutoRoutePage<dynamic>(
         routeData: routeData,
-        child: const UnknownPage(),
-      );
-    },
-    TodosRoute.name: (routeData) {
-      return MaterialPageX<dynamic>(
-        routeData: routeData,
-        child: const TodosPage(),
-      );
-    },
-    ProfileRoute.name: (routeData) {
-      return MaterialPageX<dynamic>(
-        routeData: routeData,
-        child: const ProfilePage(),
+        child: const LoginPage(),
       );
     },
   };
-
-  @override
-  List<RouteConfig> get routes => [
-        RouteConfig(
-          SplashRoute.name,
-          path: '/',
-        ),
-        RouteConfig(
-          LoginRoute.name,
-          path: '/login',
-        ),
-        RouteConfig(
-          HomeRoute.name,
-          path: '/home',
-          guards: [homeGuard],
-          children: [
-            RouteConfig(
-              TodosWrapRoute.name,
-              path: 'todos',
-              parent: HomeRoute.name,
-              children: [
-                RouteConfig(
-                  TodosRoute.name,
-                  path: '',
-                  parent: TodosWrapRoute.name,
-                )
-              ],
-            ),
-            RouteConfig(
-              ProfileWrapRoute.name,
-              path: 'profile',
-              parent: HomeRoute.name,
-              children: [
-                RouteConfig(
-                  ProfileRoute.name,
-                  path: '',
-                  parent: ProfileWrapRoute.name,
-                )
-              ],
-            ),
-            RouteConfig(
-              UnknownRoute.name,
-              path: '*',
-              parent: HomeRoute.name,
-            ),
-          ],
-        ),
-      ];
-}
-
-/// generated route for
-/// [SplashPage]
-class SplashRoute extends PageRouteInfo<void> {
-  const SplashRoute()
-      : super(
-          SplashRoute.name,
-          path: '/',
-        );
-
-  static const String name = 'SplashRoute';
-}
-
-/// generated route for
-/// [LoginPage]
-class LoginRoute extends PageRouteInfo<void> {
-  const LoginRoute()
-      : super(
-          LoginRoute.name,
-          path: '/login',
-        );
-
-  static const String name = 'LoginRoute';
 }
 
 /// generated route for
@@ -151,71 +48,52 @@ class HomeRoute extends PageRouteInfo<void> {
   const HomeRoute({List<PageRouteInfo>? children})
       : super(
           HomeRoute.name,
-          path: '/home',
           initialChildren: children,
         );
 
   static const String name = 'HomeRoute';
+
+  static const PageInfo<void> page = PageInfo<void>(name);
 }
 
 /// generated route for
-/// [EmptyRouterPage]
-class TodosWrapRoute extends PageRouteInfo<void> {
-  const TodosWrapRoute({List<PageRouteInfo>? children})
+/// [SplashPage]
+class SplashRoute extends PageRouteInfo<void> {
+  const SplashRoute({List<PageRouteInfo>? children})
       : super(
-          TodosWrapRoute.name,
-          path: 'todos',
+          SplashRoute.name,
           initialChildren: children,
         );
 
-  static const String name = 'TodosWrapRoute';
+  static const String name = 'SplashRoute';
+
+  static const PageInfo<void> page = PageInfo<void>(name);
 }
 
 /// generated route for
-/// [EmptyRouterPage]
-class ProfileWrapRoute extends PageRouteInfo<void> {
-  const ProfileWrapRoute({List<PageRouteInfo>? children})
+/// [FoodTourismPage]
+class FoodTourismRoute extends PageRouteInfo<void> {
+  const FoodTourismRoute({List<PageRouteInfo>? children})
       : super(
-          ProfileWrapRoute.name,
-          path: 'profile',
+          FoodTourismRoute.name,
           initialChildren: children,
         );
 
-  static const String name = 'ProfileWrapRoute';
+  static const String name = 'FoodTourismRoute';
+
+  static const PageInfo<void> page = PageInfo<void>(name);
 }
 
 /// generated route for
-/// [UnknownPage]
-class UnknownRoute extends PageRouteInfo<void> {
-  const UnknownRoute()
+/// [LoginPage]
+class LoginRoute extends PageRouteInfo<void> {
+  const LoginRoute({List<PageRouteInfo>? children})
       : super(
-          UnknownRoute.name,
-          path: '*',
+          LoginRoute.name,
+          initialChildren: children,
         );
 
-  static const String name = 'UnknownRoute';
-}
+  static const String name = 'LoginRoute';
 
-/// generated route for
-/// [TodosPage]
-class TodosRoute extends PageRouteInfo<void> {
-  const TodosRoute()
-      : super(
-          TodosRoute.name,
-          path: '',
-        );
-
-  static const String name = 'TodosRoute';
-}
-
-/// generated route for
-/// [ProfilePage]
-class ProfileRoute extends PageRouteInfo<void> {
-  const ProfileRoute()
-      : super(
-          ProfileRoute.name,
-          path: '',
-        );
-
-  static const String name = 'ProfileRoute';
+  static const PageInfo<void> page = PageInfo<void>(name);
 }

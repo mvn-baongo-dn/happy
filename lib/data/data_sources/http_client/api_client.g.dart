@@ -19,12 +19,12 @@ class _ApiClient implements ApiClient {
   String? baseUrl;
 
   @override
-  Future<ApiResponseModel<LoginResponseModel>> login(
-      LoginRequestModel loginRequestModel) async {
+  Future<ApiResponseModel<LoginResponseModel>> login(loginRequestModel) async {
     const _extra = <String, dynamic>{};
     final queryParameters = <String, dynamic>{};
     final _headers = <String, dynamic>{};
-    final _data = <String, dynamic>{}..addAll(loginRequestModel.toJson());
+    final _data = <String, dynamic>{};
+    _data.addAll(loginRequestModel.toJson());
     final _result = await _dio.fetch<Map<String, dynamic>>(
         _setStreamType<ApiResponseModel<LoginResponseModel>>(Options(
       method: 'POST',
