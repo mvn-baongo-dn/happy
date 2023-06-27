@@ -167,7 +167,7 @@ class _FoodTourismPageState
                                     SizedBox(
                                       width: 18,
                                     ),
-                                    Text('Alẽnada')
+                                    Text('Alenda')
                                   ],
                                 ),
                                 SizedBox(
