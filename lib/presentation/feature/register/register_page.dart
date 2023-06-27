@@ -49,8 +49,4 @@ class _RegisterPageState
 ///==========================================================================///
 ///=> Behavior of the [RegisterPage]
 ///==========================================================================///
-extension _RegisterPageBehavior on _RegisterPageState {
-  void _onPressButton() {
-    //TODO: (remove) Example of a self-defined method
-  }
-}
+extension _RegisterPageBehavior on _RegisterPageState {}
