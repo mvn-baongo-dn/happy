@@ -3,7 +3,7 @@
 // ignore_for_file: type=lint
 // ignore_for_file: unused_element, deprecated_member_use, deprecated_member_use_from_same_package, use_function_type_syntax_for_parameters, unnecessary_const, avoid_init_to_null, invalid_override_different_default_values_named, prefer_expression_function_bodies, annotate_overrides, invalid_annotation_target, unnecessary_question_mark
 
-part of 'profile_state.dart';
+part of 'food_tourism_state.dart';
 
 // **************************************************************************
 // FreezedGenerator
@@ -15,19 +15,19 @@ final _privateConstructorUsedError = UnsupportedError(
     'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more information: https://github.com/rrousselGit/freezed#custom-getters-and-methods');
 
 /// @nodoc
-mixin _$ProfileState {}
+mixin _$FoodTourismState {}
 
 /// @nodoc
-abstract class $ProfileStateCopyWith<$Res> {
-  factory $ProfileStateCopyWith(
-          ProfileState value, $Res Function(ProfileState) then) =
-      _$ProfileStateCopyWithImpl<$Res, ProfileState>;
+abstract class $FoodTourismStateCopyWith<$Res> {
+  factory $FoodTourismStateCopyWith(
+          FoodTourismState value, $Res Function(FoodTourismState) then) =
+      _$FoodTourismStateCopyWithImpl<$Res, FoodTourismState>;
 }
 
 /// @nodoc
-class _$ProfileStateCopyWithImpl<$Res, $Val extends ProfileState>
-    implements $ProfileStateCopyWith<$Res> {
-  _$ProfileStateCopyWithImpl(this._value, this._then);
+class _$FoodTourismStateCopyWithImpl<$Res, $Val extends FoodTourismState>
+    implements $FoodTourismStateCopyWith<$Res> {
+  _$FoodTourismStateCopyWithImpl(this._value, this._then);
 
   // ignore: unused_field
   final $Val _value;
@@ -36,42 +36,42 @@ class _$ProfileStateCopyWithImpl<$Res, $Val extends ProfileState>
 }
 
 /// @nodoc
-abstract class _$$_ProfileStateCopyWith<$Res> {
-  factory _$$_ProfileStateCopyWith(
-          _$_ProfileState value, $Res Function(_$_ProfileState) then) =
-      __$$_ProfileStateCopyWithImpl<$Res>;
+abstract class _$$_FoodTourismStateCopyWith<$Res> {
+  factory _$$_FoodTourismStateCopyWith(
+          _$_FoodTourismState value, $Res Function(_$_FoodTourismState) then) =
+      __$$_FoodTourismStateCopyWithImpl<$Res>;
 }
 
 /// @nodoc
-class __$$_ProfileStateCopyWithImpl<$Res>
-    extends _$ProfileStateCopyWithImpl<$Res, _$_ProfileState>
-    implements _$$_ProfileStateCopyWith<$Res> {
-  __$$_ProfileStateCopyWithImpl(
-      _$_ProfileState _value, $Res Function(_$_ProfileState) _then)
+class __$$_FoodTourismStateCopyWithImpl<$Res>
+    extends _$FoodTourismStateCopyWithImpl<$Res, _$_FoodTourismState>
+    implements _$$_FoodTourismStateCopyWith<$Res> {
+  __$$_FoodTourismStateCopyWithImpl(
+      _$_FoodTourismState _value, $Res Function(_$_FoodTourismState) _then)
       : super(_value, _then);
 }
 
 /// @nodoc
 
-class _$_ProfileState extends _ProfileState {
-  _$_ProfileState() : super._();
+class _$_FoodTourismState extends _FoodTourismState {
+  _$_FoodTourismState() : super._();
 
   @override
   String toString() {
-    return 'ProfileState()';
+    return 'FoodTourismState()';
   }
 
   @override
   bool operator ==(dynamic other) {
     return identical(this, other) ||
-        (other.runtimeType == runtimeType && other is _$_ProfileState);
+        (other.runtimeType == runtimeType && other is _$_FoodTourismState);
   }
 
   @override
   int get hashCode => runtimeType.hashCode;
 }
 
-abstract class _ProfileState extends ProfileState {
-  factory _ProfileState() = _$_ProfileState;
-  _ProfileState._() : super._();
+abstract class _FoodTourismState extends FoodTourismState {
+  factory _FoodTourismState() = _$_FoodTourismState;
+  _FoodTourismState._() : super._();
 }

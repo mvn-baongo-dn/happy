@@ -17,6 +17,8 @@ final _privateConstructorUsedError = UnsupportedError(
 /// @nodoc
 mixin _$HomePageState {
   bool get isShowNavigatorBottom => throw _privateConstructorUsedError;
+  double get currentIndex => throw _privateConstructorUsedError;
+  bool get isCenter => throw _privateConstructorUsedError;
 
   @JsonKey(ignore: true)
   $HomePageStateCopyWith<HomePageState> get copyWith =>
@@ -29,7 +31,7 @@ abstract class $HomePageStateCopyWith<$Res> {
           HomePageState value, $Res Function(HomePageState) then) =
       _$HomePageStateCopyWithImpl<$Res, HomePageState>;
   @useResult
-  $Res call({bool isShowNavigatorBottom});
+  $Res call({bool isShowNavigatorBottom, double currentIndex, bool isCenter});
 }
 
 /// @nodoc
@@ -46,11 +48,21 @@ class _$HomePageStateCopyWithImpl<$Res, $Val extends HomePageState>
   @override
   $Res call({
     Object? isShowNavigatorBottom = null,
+    Object? currentIndex = null,
+    Object? isCenter = null,
   }) {
     return _then(_value.copyWith(
       isShowNavigatorBottom: null == isShowNavigatorBottom
           ? _value.isShowNavigatorBottom
           : isShowNavigatorBottom // ignore: cast_nullable_to_non_nullable
+              as bool,
+      currentIndex: null == currentIndex
+          ? _value.currentIndex
+          : currentIndex // ignore: cast_nullable_to_non_nullable
+              as double,
+      isCenter: null == isCenter
+          ? _value.isCenter
+          : isCenter // ignore: cast_nullable_to_non_nullable
               as bool,
     ) as $Val);
   }
@@ -64,7 +76,7 @@ abstract class _$$_HomePageStateCopyWith<$Res>
       __$$_HomePageStateCopyWithImpl<$Res>;
   @override
   @useResult
-  $Res call({bool isShowNavigatorBottom});
+  $Res call({bool isShowNavigatorBottom, double currentIndex, bool isCenter});
 }
 
 /// @nodoc
@@ -79,11 +91,21 @@ class __$$_HomePageStateCopyWithImpl<$Res>
   @override
   $Res call({
     Object? isShowNavigatorBottom = null,
+    Object? currentIndex = null,
+    Object? isCenter = null,
   }) {
     return _then(_$_HomePageState(
       isShowNavigatorBottom: null == isShowNavigatorBottom
           ? _value.isShowNavigatorBottom
           : isShowNavigatorBottom // ignore: cast_nullable_to_non_nullable
+              as bool,
+      currentIndex: null == currentIndex
+          ? _value.currentIndex
+          : currentIndex // ignore: cast_nullable_to_non_nullable
+              as double,
+      isCenter: null == isCenter
+          ? _value.isCenter
+          : isCenter // ignore: cast_nullable_to_non_nullable
               as bool,
     ));
   }
@@ -92,14 +114,22 @@ class __$$_HomePageStateCopyWithImpl<$Res>
 /// @nodoc
 
 class _$_HomePageState extends _HomePageState {
-  _$_HomePageState({required this.isShowNavigatorBottom}) : super._();
+  _$_HomePageState(
+      {required this.isShowNavigatorBottom,
+      required this.currentIndex,
+      required this.isCenter})
+      : super._();
 
   @override
   final bool isShowNavigatorBottom;
+  @override
+  final double currentIndex;
+  @override
+  final bool isCenter;
 
   @override
   String toString() {
-    return 'HomePageState(isShowNavigatorBottom: $isShowNavigatorBottom)';
+    return 'HomePageState(isShowNavigatorBottom: $isShowNavigatorBottom, currentIndex: $currentIndex, isCenter: $isCenter)';
   }
 
   @override
@@ -108,11 +138,16 @@ class _$_HomePageState extends _HomePageState {
         (other.runtimeType == runtimeType &&
             other is _$_HomePageState &&
             (identical(other.isShowNavigatorBottom, isShowNavigatorBottom) ||
-                other.isShowNavigatorBottom == isShowNavigatorBottom));
+                other.isShowNavigatorBottom == isShowNavigatorBottom) &&
+            (identical(other.currentIndex, currentIndex) ||
+                other.currentIndex == currentIndex) &&
+            (identical(other.isCenter, isCenter) ||
+                other.isCenter == isCenter));
   }
 
   @override
-  int get hashCode => Object.hash(runtimeType, isShowNavigatorBottom);
+  int get hashCode =>
+      Object.hash(runtimeType, isShowNavigatorBottom, currentIndex, isCenter);
 
   @JsonKey(ignore: true)
   @override
@@ -122,12 +157,18 @@ class _$_HomePageState extends _HomePageState {
 }
 
 abstract class _HomePageState extends HomePageState {
-  factory _HomePageState({required final bool isShowNavigatorBottom}) =
-      _$_HomePageState;
+  factory _HomePageState(
+      {required final bool isShowNavigatorBottom,
+      required final double currentIndex,
+      required final bool isCenter}) = _$_HomePageState;
   _HomePageState._() : super._();
 
   @override
   bool get isShowNavigatorBottom;
+  @override
+  double get currentIndex;
+  @override
+  bool get isCenter;
   @override
   @JsonKey(ignore: true)
   _$$_HomePageStateCopyWith<_$_HomePageState> get copyWith =>

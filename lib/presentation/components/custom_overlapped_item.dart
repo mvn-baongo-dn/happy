@@ -1,21 +1,30 @@
+library overlapped_carousel;
+
+import 'dart:ui';
+
 import 'package:flutter/material.dart';
 
-class AddressList extends StatefulWidget {
-  final List<Widget> widgets;
+import '../../data/models/common/responses/district.dart';
+
+class CustomOverlappedItem extends StatefulWidget {
+  final int length;
   final Function(int) onClicked;
   final int? currentIndex;
+  final List<District> district;
 
-  const AddressList(
-      {super.key,
-      required this.widgets,
-      required this.onClicked,
-      this.currentIndex});
+  const CustomOverlappedItem({
+    super.key,
+    required this.length,
+    required this.onClicked,
+    required this.district,
+    this.currentIndex,
+  });
 
   @override
-  _AddressListState createState() => _AddressListState();
+  _CustomOverlappedItemState createState() => _CustomOverlappedItemState();
 }
 
-class _AddressListState extends State<AddressList> {
+class _CustomOverlappedItemState extends State<CustomOverlappedItem> {
   double currentIndex = 2;
 
   @override
@@ -36,7 +45,7 @@ class _AddressListState extends State<AddressList> {
             onPanUpdate: (details) {
               setState(() {
                 var index = currentIndex - details.delta.dx * 0.02;
-                if (index >= -1 && index <= widget.widgets.length - 1) {
+                if (index >= -1 && index <= widget.length - 1) {
                   currentIndex = index;
                 }
               });
@@ -46,10 +55,13 @@ class _AddressListState extends State<AddressList> {
                 currentIndex = currentIndex.ceil().toDouble();
               });
             },
-            child: AddressListCardItems(
+            child: OverlappedItems(
+              districts: districts,
               cards: List.generate(
-                widget.widgets.length,
-                (index) => CardModel(id: index, child: widget.widgets[index]),
+                widget.length,
+                (index) => CardModel(
+                  id: index,
+                ),
               ),
               centerIndex: currentIndex,
               maxWidth: constraints.maxWidth,
@@ -63,19 +75,20 @@ class _AddressListState extends State<AddressList> {
   }
 }
 
-class AddressListCardItems extends StatelessWidget {
+class OverlappedItems extends StatelessWidget {
   final List<CardModel> cards;
   final Function(int) onClicked;
   final double centerIndex;
   final double maxHeight;
   final double maxWidth;
-
-  AddressListCardItems({
+  final List<District> districts;
+  OverlappedItems({
     required this.cards,
     required this.centerIndex,
     required this.maxHeight,
     required this.maxWidth,
     required this.onClicked,
+    required this.districts,
   });
 
   double getCardPosition(int index) {
@@ -155,11 +168,76 @@ class AddressListCardItems extends StatelessWidget {
       child: Transform(
         transform: getTransform(index),
         alignment: FractionalOffset.center,
-        child: Container(
-          width: width.toDouble(),
-          height: height > 0 ? height : 0,
-          child: item.child,
-        ),
+        child: item.isCenter
+            ? Stack(
+                children: [
+                  ClipRRect(
+                    borderRadius: BorderRadius.circular(15),
+                    child: Container(
+                      width: width.toDouble(),
+                      height: height > 0 ? height : 0,
+                      child: Image.asset(
+                        districts[index].image,
+                        fit: BoxFit.fill,
+                      ),
+                    ),
+                  ),
+                  Positioned(
+                    left: 13,
+                    bottom: 20,
+                    right: 80,
+                    child: Column(
+                      crossAxisAlignment: CrossAxisAlignment.start,
+                      children: [
+                        Row(
+                          children: [
+                            Icon(
+                              Icons.location_on,
+                              size: 13,
+                            ),
+                            Text(
+                              districts[index].name,
+                              softWrap: true,
+                              style: TextStyle(
+                                fontSize: 10,
+                                fontWeight: FontWeight.bold,
+                              ),
+                            )
+                          ],
+                        ),
+                        Text(
+                          districts[index].slogan,
+                          softWrap: true,
+                          style: TextStyle(
+                            fontSize: 16,
+                            fontWeight: FontWeight.bold,
+                          ),
+                        )
+                      ],
+                    ),
+                  )
+                ],
+              )
+            : ClipRRect(
+                borderRadius: BorderRadius.circular(15),
+                child: Container(
+                  width: width.toDouble(),
+                  height: height > 0 ? height : 0,
+                  decoration: new BoxDecoration(
+                    image: new DecorationImage(
+                      image: new ExactAssetImage(districts[index].image),
+                      fit: BoxFit.cover,
+                    ),
+                  ),
+                  child: new BackdropFilter(
+                    filter: new ImageFilter.blur(sigmaX: 0.1, sigmaY: 0.1),
+                    child: new Container(
+                      decoration: new BoxDecoration(
+                          color: Colors.black.withOpacity(0.15)),
+                    ),
+                  ),
+                ),
+              ),
       ),
     );
   }
@@ -168,9 +246,12 @@ class AddressListCardItems extends StatelessWidget {
     for (int i = 0; i < widgets.length; i++) {
       if (widgets[i].id == centerIndex) {
         widgets[i].zIndex = widgets.length.toDouble();
+        widgets[i].isCenter = true; // Đánh dấu thẻ ở vị trí trung tâm
       } else if (widgets[i].id < centerIndex) {
+        widgets[i].isCenter = false;
         widgets[i].zIndex = widgets[i].id.toDouble();
       } else {
+        widgets[i].isCenter = false;
         widgets[i].zIndex =
             widgets.length.toDouble() - widgets[i].id.toDouble();
       }
@@ -179,7 +260,9 @@ class AddressListCardItems extends StatelessWidget {
     return widgets.map((e) {
       double distance = (centerIndex - e.id).abs();
       if (distance >= 0 && distance <= 3)
-        return _buildItem(e);
+        return _buildItem(
+          e,
+        );
       else
         return Container();
     }).toList();
@@ -201,6 +284,8 @@ class CardModel {
   final int id;
   double zIndex;
   final Widget? child;
+  bool isCenter;
 
-  CardModel({required this.id, this.zIndex = 0.0, this.child});
+  CardModel(
+      {required this.id, this.zIndex = 0.0, this.child, this.isCenter = false});
 }

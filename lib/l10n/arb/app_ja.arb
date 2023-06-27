@@ -2,7 +2,14 @@
     "@@locale": "ja",
     "counterAppBarTitle": "Contador",
     "@counterAppBarTitle": {
-        "description": "Texto mostrado en la AppBar de la página del contador"
-    }
+        "description": "カウンターページのAppBarに表示されるテキスト"
+    },
+    "travel":"Travel",
+    "food": "フード",
+    "seeAll" : "すべてを見る",
+    "interestingSpaces" : "興味深い点",
+    "exploration":"探検",
+    "whereDoYouWantToGo" : "どこへ行きたい",
+    "seeMore" : "続きを見る"
 }
     
