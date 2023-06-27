@@ -11,7 +11,7 @@ import '../../core/base_page/base_page.dart';
 /// Module:      [RegisterModule]
 /// Presenter:   [RegisterPresenter]
 /// State:       [RegisterState]
-/// Description: 
+/// Description:
 /// TODO: This is [RegisterPage]
 
 class RegisterPage extends BasePage {
