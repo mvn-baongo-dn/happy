@@ -232,8 +232,4 @@ class _FoodTourismPageState
 ///==========================================================================///
 ///=> Behavior of the [FoodTourismPage]
 ///==========================================================================///
-extension _FoodTourismPageBehavior on _FoodTourismPageState {
-  void _onPressButton() {
-    //TODO: (remove) Example of a self-defined method
-  }
-}
+
