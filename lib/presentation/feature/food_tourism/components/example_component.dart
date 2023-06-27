@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
-import '../bloc/profile_presenter.dart';
-import '../bloc/profile_state.dart';
+import '../bloc/food_tourism_presenter.dart';
+import '../bloc/food_tourism_state.dart';
 
 class ExampleComponent extends StatelessWidget {
   const ExampleComponent({
@@ -10,17 +10,18 @@ class ExampleComponent extends StatelessWidget {
     Key? key,
   }) : super(key: key);
 
-  final ProfilePresenter presenter;
+  final FoodTourismPresenter presenter;
 
+  //TODO: (remove) An example of a child component have state
   @override
   Widget build(BuildContext context) =>
-      BlocBuilder<ProfilePresenter, ProfileState>(
+      BlocBuilder<FoodTourismPresenter, FoodTourismState>(
         bloc: presenter,
         buildWhen: (previous, current) => false,
         builder: (context, state) => Container(
           width: double.infinity,
           height: double.infinity,
-          color: Colors.red,
+          color: Colors.green,
         ),
       );
 }

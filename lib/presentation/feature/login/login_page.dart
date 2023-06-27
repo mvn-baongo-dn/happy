@@ -13,6 +13,7 @@ import '../../core/base_page/base_page.dart';
 
 import '../../routes/app_router.dart';
 
+@RoutePage()
 class LoginPage extends BasePage {
   const LoginPage({Key? key}) : super(key: key);
 

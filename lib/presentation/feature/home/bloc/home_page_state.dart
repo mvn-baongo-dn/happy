@@ -6,11 +6,15 @@ part 'home_page_state.freezed.dart';
 class HomePageState with _$HomePageState {
   factory HomePageState({
     required bool isShowNavigatorBottom,
+    required double currentIndex,
+    required bool isCenter,
   }) = _HomePageState;
 
   const HomePageState._();
 
   factory HomePageState.initial() => HomePageState(
         isShowNavigatorBottom: true,
+        currentIndex: 2,
+        isCenter: false,
       );
 }

@@ -1,10 +1,10 @@
 class RouterPathConstants {
   RouterPathConstants._();
 
-  // static const splash = '/';
+  static const splash = '/splash';
   static const login = '/login';
   static const home = '/home';
-  static const todos = 'todos';
+  static const foodTourism = 'foodTourism';
   static const addTodo = 'add';
   static const profile = 'profile';
 }
