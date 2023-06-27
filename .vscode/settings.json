@@ -22,6 +22,7 @@
         "cirrusci",
         "cmdline",
         "cocoapods",
+        "cupertino",
         "dartx",
         "ellipsize",
         "FASTLANE",
@@ -41,11 +42,11 @@
         "styfle",
         "subosito",
         "todos",
+        "unawaited",
         "utsname",
+        "vsync",
         "xcodebuild",
         "XVCJ",
-        "zgosalvez",
-        "cupertino",
-        "unawaited",
+        "zgosalvez"
     ]
 }

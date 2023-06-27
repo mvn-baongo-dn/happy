@@ -3,5 +3,13 @@
     "counterAppBarTitle": "Contador",
     "@counterAppBarTitle": {
         "description": "Texto mostrado en la AppBar de la página del contador"
-    }
+    },
+    "travel" :"Travel",
+    "food": "Food",
+    "seeAll" : "See All",
+    "interestingSpaces" : " Interesting places",
+    "exploration":"exploration",
+    "whereDoYouWantToGo" : "Where Do You Want To Go",
+    "seeMore" : "See More"
+
 }
