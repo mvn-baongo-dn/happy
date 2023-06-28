@@ -27,10 +27,12 @@ class DeviceInfoHelper {
   }
 
   static Future<String> get appVersion async => PackageInfo.fromPlatform()
-      .then((packageInfo) => packageInfo.version
-          .replaceAll('-production', '')
-          .replaceAll('-staging', '')
-          .replaceAll('-development', ''))
+      .then(
+        (packageInfo) => packageInfo.version
+            .replaceAll('-production', '')
+            .replaceAll('-staging', '')
+            .replaceAll('-development', ''),
+      )
       .onError((error, stackTrace) => '0.0.0');
 
   static Future<String?> get device async {

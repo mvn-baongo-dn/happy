@@ -1,7 +1,9 @@
+import 'package:auto_route/auto_route.dart';
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
 
 import '../../../resources/resources.dart';
+import '../../../routes/app_router.dart';
 
 class ItemRecommend extends StatelessWidget {
   const ItemRecommend({
@@ -19,7 +21,7 @@ class ItemRecommend extends StatelessWidget {
           SizedBox(
             width: 25,
           ),
-          _buildInformation()
+          _buildInformation(context)
         ],
       ),
     );
@@ -77,7 +79,7 @@ class ItemRecommend extends StatelessWidget {
     );
   }
 
-  Expanded _buildInformation() {
+  Expanded _buildInformation(BuildContext context) {
     return Expanded(
       child: Column(
         mainAxisAlignment: MainAxisAlignment.center,
@@ -112,7 +114,9 @@ class ItemRecommend extends StatelessWidget {
           Row(
             children: [
               InkWell(
-                onTap: () {},
+                onTap: () {
+                  AutoRouter.of(context).replace(LoginRoute());
+                },
                 child: Container(
                   padding: EdgeInsets.symmetric(
                     vertical: 8,

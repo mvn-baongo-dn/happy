@@ -36,7 +36,10 @@ class TabBarHome extends StatelessWidget {
   }
 
   LayoutBuilder _buildTab(
-      int? _cachedFromIdx, int? _cachedToIdx, MapEntry<int, String> entry) {
+    int? _cachedFromIdx,
+    int? _cachedToIdx,
+    MapEntry<int, String> entry,
+  ) {
     return LayoutBuilder(
       builder: (context, constraints) => Container(
         width: constraints.maxWidth,
@@ -91,9 +94,15 @@ class TabBarHome extends StatelessWidget {
                     ? Color.lerp(Color(0xFFC6D5DA), Color(0xFF2E3132), progress)
                     : entry.key == _toIndex
                         ? Color.lerp(
-                            Color(0xFF2E3132), Color(0xFFC6D5DA), progress)
+                            Color(0xFF2E3132),
+                            Color(0xFFC6D5DA),
+                            progress,
+                          )
                         : Color.lerp(
-                            Color(0xFF2E3132), Color(0xFF2E3132), progress),
+                            Color(0xFF2E3132),
+                            Color(0xFF2E3132),
+                            progress,
+                          ),
                 borderRadius: BorderRadius.circular(200),
               ),
               alignment: Alignment.center,

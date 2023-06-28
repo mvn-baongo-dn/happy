@@ -23,7 +23,7 @@ class ModulesInjector {
     //FoodTourismModule page
     FoodTourismModule().register();
 
-     //ExplorationTourismModule page
+    //ExplorationTourismModule page
     ExplorationTourismModule().register();
   }
 }

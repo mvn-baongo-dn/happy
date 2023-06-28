@@ -5,7 +5,7 @@
         "description": "Texto mostrado en la AppBar de la página del contador"
     },
     "travel" :"Travel",
-    "food": "Ẩm thực",
+    "food": "Food",
     "seeAll" : "See All",
     "interestingSpaces" : " Interesting places",
     "exploration":"Exploration",

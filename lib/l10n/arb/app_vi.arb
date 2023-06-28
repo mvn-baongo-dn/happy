@@ -4,7 +4,7 @@
     "@counterAppBarTitle": {
         "description": " Văn bản được hiển thị trong AppBar của trang truy cập"
     },
-    "travel" :"'Travel'",
+    "travel" :"Travel",
     "food": "Ẩm thực",
     "seeAll" : "Xem tất cả",
     "interestingSpaces" : "Các điểm lý thú",

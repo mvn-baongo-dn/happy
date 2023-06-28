@@ -1,6 +1,8 @@
+import 'package:auto_route/auto_route.dart';
 import 'package:flutter/material.dart';
 
 import '../../resources/resources.dart';
+import '../../routes/app_router.dart';
 import './bloc/exploration_tourism_module.dart';
 import './bloc/exploration_tourism_presenter.dart';
 import './bloc/exploration_tourism_state.dart';
@@ -13,7 +15,7 @@ import 'components/list_District.dart';
 /// Module:      [ExplorationTourismModule]
 /// Presenter:   [ExplorationTourismPresenter]
 /// State:       [ExplorationTourismState]
-/// Description: 
+/// Description:
 /// TODO: This is [ExplorationTourismPage]
 
 class ExplorationTourismPage extends BasePage {
@@ -26,8 +28,7 @@ class ExplorationTourismPage extends BasePage {
 class _ExplorationTourismPageState
     extends BasePageState<ExplorationTourismPage, ExplorationTourismPresenter> {
   @override
-
-Widget buildBody(BuildContext context) {
+  Widget buildBody(BuildContext context) {
     var screenWidth = MediaQuery.of(context).size.width;
     var screenHeight = MediaQuery.of(context).size.height;
 
@@ -53,6 +54,7 @@ Widget buildBody(BuildContext context) {
             ListDistrict(
               screenWidth: screenWidth,
               screenHeight: screenHeight,
+              onClick: (index) => AutoRouter.of(context).replace(LoginRoute()),
             ),
             SizedBox(
               height: 50,
@@ -83,7 +85,8 @@ Widget buildBody(BuildContext context) {
       ),
     );
   }
-   List<Widget> _buildWidgetRecommend() => List.generate(
+
+  List<Widget> _buildWidgetRecommend() => List.generate(
         10,
         (index) => ItemRecommend(),
       );
@@ -100,8 +103,8 @@ Widget buildBody(BuildContext context) {
 ///==========================================================================///
 ///=> Behavior of the [ExplorationTourismPage]
 ///==========================================================================///
-extension _ExplorationTourismPageBehavior on _ExplorationTourismPageState {
-  void _onPressButton() {
-    //TODO: (remove) Example of a self-defined method
-  }
-}
+// extension _ExplorationTourismPageBehavior on _ExplorationTourismPageState {
+//   void _onPressButton() {
+//     //TODO: (remove) Example of a self-defined method
+//   }
+// }

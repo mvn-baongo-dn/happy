@@ -18,13 +18,14 @@ mixin _$ExplorationTourismState {}
 
 /// @nodoc
 abstract class $ExplorationTourismStateCopyWith<$Res> {
-  factory $ExplorationTourismStateCopyWith(
-          ExplorationTourismState value, $Res Function(ExplorationTourismState) then) =
+  factory $ExplorationTourismStateCopyWith(ExplorationTourismState value,
+          $Res Function(ExplorationTourismState) then) =
       _$ExplorationTourismStateCopyWithImpl<$Res, ExplorationTourismState>;
 }
 
 /// @nodoc
-class _$ExplorationTourismStateCopyWithImpl<$Res, $Val extends ExplorationTourismState>
+class _$ExplorationTourismStateCopyWithImpl<$Res,
+        $Val extends ExplorationTourismState>
     implements $ExplorationTourismStateCopyWith<$Res> {
   _$ExplorationTourismStateCopyWithImpl(this._value, this._then);
 
@@ -36,17 +37,18 @@ class _$ExplorationTourismStateCopyWithImpl<$Res, $Val extends ExplorationTouris
 
 /// @nodoc
 abstract class _$$_ExplorationTourismStateCopyWith<$Res> {
-  factory _$$_ExplorationTourismStateCopyWith(
-          _$_ExplorationTourismState value, $Res Function(_$_ExplorationTourismState) then) =
+  factory _$$_ExplorationTourismStateCopyWith(_$_ExplorationTourismState value,
+          $Res Function(_$_ExplorationTourismState) then) =
       __$$_ExplorationTourismStateCopyWithImpl<$Res>;
 }
 
 /// @nodoc
 class __$$_ExplorationTourismStateCopyWithImpl<$Res>
-    extends _$ExplorationTourismStateCopyWithImpl<$Res, _$_ExplorationTourismState>
+    extends _$ExplorationTourismStateCopyWithImpl<$Res,
+        _$_ExplorationTourismState>
     implements _$$_ExplorationTourismStateCopyWith<$Res> {
-  __$$_ExplorationTourismStateCopyWithImpl(
-      _$_ExplorationTourismState _value, $Res Function(_$_ExplorationTourismState) _then)
+  __$$_ExplorationTourismStateCopyWithImpl(_$_ExplorationTourismState _value,
+      $Res Function(_$_ExplorationTourismState) _then)
       : super(_value, _then);
 }
 
@@ -63,7 +65,8 @@ class _$_ExplorationTourismState extends _ExplorationTourismState {
   @override
   bool operator ==(dynamic other) {
     return identical(this, other) ||
-        (other.runtimeType == runtimeType && other is _$_ExplorationTourismState);
+        (other.runtimeType == runtimeType &&
+            other is _$_ExplorationTourismState);
   }
 
   @override
