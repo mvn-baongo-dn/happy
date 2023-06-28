@@ -10,13 +10,13 @@ class CustomOverlappedItem extends StatefulWidget {
   final int length;
   final Function(int) onClicked;
   final int? currentIndex;
-  final List<District> district;
+  final List<District> districts;
 
   const CustomOverlappedItem({
     super.key,
     required this.length,
     required this.onClicked,
-    required this.district,
+    required this.districts,
     this.currentIndex,
   });
 
@@ -56,7 +56,7 @@ class _CustomOverlappedItemState extends State<CustomOverlappedItem> {
               });
             },
             child: OverlappedItems(
-              districts: districts,
+              districts: widget.districts,
               cards: List.generate(
                 widget.length,
                 (index) => CardModel(

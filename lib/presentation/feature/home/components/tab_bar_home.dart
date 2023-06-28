@@ -16,7 +16,7 @@ class TabBarHome extends StatelessWidget {
     int? _cachedToIdx;
     return TabBar(
       padding: EdgeInsets.only(left: 30, right: 30, top: 20, bottom: 10),
-      tabs: [AppText.value.food, AppText.value.exploration]
+      tabs: [AppText.value.exploration, AppText.value.food]
           .asMap()
           .entries
           .map(

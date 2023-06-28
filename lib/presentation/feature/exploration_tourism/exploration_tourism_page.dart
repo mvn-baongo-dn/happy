@@ -1,36 +1,33 @@
-import 'package:auto_route/annotations.dart';
-
 import 'package:flutter/material.dart';
 
-import 'package:happy/presentation/resources/resources.dart';
-
-import './bloc/food_tourism_module.dart';
-import './bloc/food_tourism_presenter.dart';
-import './bloc/food_tourism_state.dart';
+import '../../resources/resources.dart';
+import './bloc/exploration_tourism_module.dart';
+import './bloc/exploration_tourism_presenter.dart';
+import './bloc/exploration_tourism_state.dart';
 import '../../core/base_page/base_page.dart';
 import 'components/item_recommend.dart';
 import 'components/list_District.dart';
 
-/// Create at:   27/06/2023
-/// Page:        [FoodTourismPage]
-/// Module:      [FoodTourismModule]
-/// Presenter:   [FoodTourismPresenter]
-/// State:       [FoodTourismState]
-/// Description:
-/// TODO: This is [FoodTourismPage]
-///
-@RoutePage()
-class FoodTourismPage extends BasePage {
-  const FoodTourismPage({Key? key}) : super(key: key);
+/// Create at:   28/06/2023
+/// Page:        [ExplorationTourismPage]
+/// Module:      [ExplorationTourismModule]
+/// Presenter:   [ExplorationTourismPresenter]
+/// State:       [ExplorationTourismState]
+/// Description: 
+/// TODO: This is [ExplorationTourismPage]
+
+class ExplorationTourismPage extends BasePage {
+  const ExplorationTourismPage({Key? key}) : super(key: key);
 
   @override
-  State<FoodTourismPage> createState() => _FoodTourismPageState();
+  State<ExplorationTourismPage> createState() => _ExplorationTourismPageState();
 }
 
-class _FoodTourismPageState
-    extends BasePageState<FoodTourismPage, FoodTourismPresenter> {
+class _ExplorationTourismPageState
+    extends BasePageState<ExplorationTourismPage, ExplorationTourismPresenter> {
   @override
-  Widget buildBody(BuildContext context) {
+
+Widget buildBody(BuildContext context) {
     var screenWidth = MediaQuery.of(context).size.width;
     var screenHeight = MediaQuery.of(context).size.height;
 
@@ -86,8 +83,7 @@ class _FoodTourismPageState
       ),
     );
   }
-
-  List<Widget> _buildWidgetRecommend() => List.generate(
+   List<Widget> _buildWidgetRecommend() => List.generate(
         10,
         (index) => ItemRecommend(),
       );
@@ -99,4 +95,13 @@ class _FoodTourismPageState
 
   @override
   bool get resizeToAvoidBottomInset => true;
+}
+
+///==========================================================================///
+///=> Behavior of the [ExplorationTourismPage]
+///==========================================================================///
+extension _ExplorationTourismPageBehavior on _ExplorationTourismPageState {
+  void _onPressButton() {
+    //TODO: (remove) Example of a self-defined method
+  }
 }

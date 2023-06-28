@@ -21,8 +21,8 @@ class ListDistrict extends StatelessWidget {
       height: min(screenWidth / 3 * (16 / 6), screenHeight * .9),
       child: CustomOverlappedItem(
         currentIndex: 2,
-        districts: foodDistrict,
-        length: foodDistrict.length,
+        districts: explorationDistrict,
+        length: explorationDistrict.length,
         onClicked: (index) {
           ScaffoldMessenger.of(context).showSnackBar(
             SnackBar(
