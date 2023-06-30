@@ -21,7 +21,7 @@ class LanguageSelectionPresenter extends BasePresenter<LanguageSelectionState> {
     emit(state.copyWith(language: localeLanguages));
   }
 
-   Future<void> setLanguage() async {
-     _locale.setLocale(state.language.locale);
+  Future<void> setLanguage() async {
+    _locale.setLocale(state.language.locale);
   }
 }

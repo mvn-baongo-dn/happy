@@ -26,14 +26,13 @@ class AppRouter extends _$AppRouter {
         AutoRoute(
           path: RouterPathConstants.home,
           page: HomeRoute.page,
-         
         ),
         AutoRoute(
           page: FoodTourismRoute.page,
         ),
         AutoRoute(
           page: LanguageSelectionRoute.page,
-           initial: true,
+          initial: true,
         ),
       ];
   static BuildContext get context =>

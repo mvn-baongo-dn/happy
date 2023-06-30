@@ -18,18 +18,18 @@ class LanguageSelectionState with _$LanguageSelectionState {
       // }
       );
 
-  factory LanguageSelectionState.initial() =>
-      LanguageSelectionState(
-        localeLanguage: [LocaleLanguage(
+  factory LanguageSelectionState.initial() => LanguageSelectionState(
+        localeLanguage: [
+          LocaleLanguage(
+            id: 1,
+            name: 'Việt Nam',
+            locale: Locale('vi'),
+          )
+        ],
+        language: LocaleLanguage(
           id: 1,
           name: 'Việt Nam',
           locale: Locale('vi'),
-        )],
-        language: 
-        LocaleLanguage(
-          id: 1,
-          name: 'Việt Nam',
-          locale: Locale('vi'),
-        )
-      ,);
+        ),
+      );
 }

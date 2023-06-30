@@ -4,7 +4,7 @@ class ItemLanguage extends StatelessWidget {
   const ItemLanguage({
     required this.onTap,
     required this.text,
-    super.key, 
+    super.key,
   });
   final Function() onTap;
   final String text;

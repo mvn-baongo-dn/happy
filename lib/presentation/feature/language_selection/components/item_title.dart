@@ -2,7 +2,8 @@ import 'package:flutter/material.dart';
 
 class Item_title extends StatelessWidget {
   const Item_title({
-    super.key, required this.text,
+    super.key,
+    required this.text,
   });
   final String text;
 
