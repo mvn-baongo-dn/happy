@@ -5,12 +5,13 @@
 
   Please look at the following checklist to ensure that your PR can be accepted quickly:
 -->
+## Reference issues (optional)
 
-## Description
+## Descriptions (required)
 
 <!--- Describe your changes in detail -->
 
-## Type of Change
+## Checklist (required)
 
 <!--- Put an `x` in all the boxes that apply: -->
 
@@ -21,3 +22,7 @@
 - [ ] ✅ Build configuration change
 - [ ] 📝 Documentation
 - [ ] 🗑️ Chore
+
+## Screenshots (optional)
+
+## More related references (optional)
