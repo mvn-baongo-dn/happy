@@ -4,6 +4,13 @@ import './splash_state.dart';
 import '../../../../domain/use_cases/auth/get_access_token_local_use_case.dart';
 import '../../../core/base_page/base_bloc/base_presenter.dart';
 
+enum AppStates {
+  none,
+  onboarding,
+  login,
+  home,
+}
+
 class SplashPresenter extends BasePresenter<SplashState> {
   SplashPresenter(
     this._getAccessTokenUseCase, {

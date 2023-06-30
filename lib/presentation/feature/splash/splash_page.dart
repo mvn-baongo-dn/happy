@@ -1,5 +1,6 @@
 import 'package:auto_route/auto_route.dart';
 import 'package:flutter/material.dart';
+import 'package:happy/utilities/extensions/extensions.dart';
 
 import './bloc/splash_presenter.dart';
 import '../../core/base_page/base_page.dart';
@@ -38,20 +39,20 @@ class _SplashPageState extends BasePageState<SplashPage, SplashPresenter> {
 
 extension _SplashPageBehavior on _SplashPageState {
   void _initPage() {
-    // presenter
-    //     .checkToken()
-    //     .subscribeHandleError(
-    //       this,
-    //     )
-    //     .subscribeOnSuccess(
-    //       this,
-    //       success: _handleCheckingTokenSuccess,
-    //     );
+    presenter
+        .checkToken()
+        .subscribeHandleError(
+          this,
+        )
+        .subscribeOnSuccess(
+          this,
+          success: _handleCheckingTokenSuccess,
+        );
   }
 
-  // void _handleCheckingTokenSuccess(String? value) {
-  //   AutoRouter.of(context).replace(
-  //     value == null ? const LoginRoute() : const HomeRoute(),
-  //   );
-  // }
+  void _handleCheckingTokenSuccess(String? value) {
+    // AutoRouter.of(context).replace(
+    //   value == null ? const LoginRoute() : const HomeRoute(),
+    // );
+  }
 }
