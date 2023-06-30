@@ -39,6 +39,12 @@ abstract class _$AppRouter extends RootStackRouter {
         child: const LoginPage(),
       );
     },
+    LanguageSelectionRoute.name: (routeData) {
+      return AutoRoutePage<dynamic>(
+        routeData: routeData,
+        child: const LanguageSelectionPage(),
+      );
+    },
   };
 }
 
@@ -94,6 +100,20 @@ class LoginRoute extends PageRouteInfo<void> {
         );
 
   static const String name = 'LoginRoute';
+
+  static const PageInfo<void> page = PageInfo<void>(name);
+}
+
+/// generated route for
+/// [LanguageSelectionPage]
+class LanguageSelectionRoute extends PageRouteInfo<void> {
+  const LanguageSelectionRoute({List<PageRouteInfo>? children})
+      : super(
+          LanguageSelectionRoute.name,
+          initialChildren: children,
+        );
+
+  static const String name = 'LanguageSelectionRoute';
 
   static const PageInfo<void> page = PageInfo<void>(name);
 }

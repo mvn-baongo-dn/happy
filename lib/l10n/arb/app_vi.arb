@@ -4,7 +4,7 @@
     "@counterAppBarTitle": {
         "description": "Texto mostrado en la AppBar de la página del contador"
     },
-    "travel" :"'Travel'",
+    "travel" :"Travel",
     "food": "Ẩm thực",
     "seeAll" : "Xem tất cả",
     "interestingSpaces" : "Các điểm lý thú",

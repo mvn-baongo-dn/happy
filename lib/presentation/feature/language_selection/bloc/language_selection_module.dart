@@ -9,7 +9,7 @@ class LanguageSelectionModule extends BaseModule<LanguageSelectionPresenter> {
     // is necessaryto strictly manage whether this presenter is a factory
     // or a singleton
     injector.registerFactory<LanguageSelectionPresenter>(
-      () => LanguageSelectionPresenter(),
+      () => LanguageSelectionPresenter(),    
     );
   }
 }
