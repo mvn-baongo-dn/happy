@@ -9,9 +9,9 @@ import './bloc/language_selection_module.dart';
 import './bloc/language_selection_presenter.dart';
 import './bloc/language_selection_state.dart';
 import '../../core/base_page/base_page.dart';
-import 'components/Item_Title.dart';
-import 'components/iteam_language_choose.dart';
+import 'components/item_language_choose.dart';
 import 'components/item_language.dart';
+import 'components/item_title.dart';
 
 /// Create at:   28/06/2023
 /// Page:        [LanguageSelectionPage]
@@ -66,14 +66,14 @@ class _LanguageSelectionPageState
               child: Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
-                  Item_title(
+                  ItemTitle(
                     text: 'NGÔN NGỮ',
                   ),
                   ItemLanguageChoose(
                     text: state.language.name,
                     onTap: () => _onPressLanguage(),
                   ),
-                  Item_title(text: 'LỰA CHỌN NGÔN NGỮ'),
+                  ItemTitle(text: 'LỰA CHỌN NGÔN NGỮ'),
                   SizedBox(
                     height: 10,
                   ),
