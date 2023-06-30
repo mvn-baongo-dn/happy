@@ -45,7 +45,7 @@ dependencies:
   # Web
   url_strategy: ^0.2.0
   auto_route: ^7.2.0
-  visibility_detector: ^0.3.3
+  visibility_detector: ^0.4.0+2
   # Image
   cached_network_image: ^3.2.3
  
