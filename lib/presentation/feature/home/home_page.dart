@@ -1,6 +1,7 @@
 import 'package:auto_route/annotations.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:happy/presentation/feature/exploration_tourism/exploration_tourism_page.dart';
 import 'package:happy/presentation/feature/food_tourism/food_tourism_page.dart';
 import 'package:happy/presentation/resources/resources.dart';
 import '../../components/sliver_app_bar_button.dart';
@@ -62,7 +63,10 @@ class _HomePageState extends BasePageState<HomePage, HomePagePresenter>
           body: TabBarView(
             physics: NeverScrollableScrollPhysics(),
             controller: tabController,
-            children: [FoodTourismPage(), Text('bb')],
+            children: [
+              ExplorationTourismPage(),
+              FoodTourismPage(),
+            ],
           ),
         ),
       ),

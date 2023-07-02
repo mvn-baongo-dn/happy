@@ -63,9 +63,10 @@ class LoggerInterceptor extends Interceptor {
           ..addEntries(data.fields)
           ..addEntries(data.files);
         _prettyPrintData(
-            data: formDataMap,
-            header: 'Form data | ${data.boundary}',
-            isError: false);
+          data: formDataMap,
+          header: 'Form data | ${data.boundary}',
+          isError: false,
+        );
       } else {
         _prettyPrintData(
           data: data,
@@ -179,9 +180,10 @@ class LoggerInterceptor extends Interceptor {
     required bool isError,
   }) {
     _print(
-        text: '$text'
-            '${'═' * (maxWidth - text.length)}',
-        isError: isError);
+      text: '$text'
+          '${'═' * (maxWidth - text.length)}',
+      isError: isError,
+    );
   }
 
   void _printResponse({

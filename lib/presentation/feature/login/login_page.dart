@@ -115,7 +115,7 @@ class _LoginPageState extends BasePageState<LoginPage, LoginPresenter>
               ),
               Container(
                 decoration: BoxDecoration(
-                  color: Colors.white,
+                  color: Theme.of(context).scaffoldBackgroundColor,
                   borderRadius: BorderRadius.circular(16),
                 ),
                 padding: const EdgeInsets.all(16),
@@ -131,8 +131,9 @@ class _LoginPageState extends BasePageState<LoginPage, LoginPresenter>
                     ),
                     const SizedBox(height: 8),
                     PasswordFormField(
-                        passwordFocusNode: passwordFocusNode,
-                        passwordController: passwordController),
+                      passwordFocusNode: passwordFocusNode,
+                      passwordController: passwordController,
+                    ),
                     const SizedBox(height: 32),
                     LoginButton(presenter: presenter, onPressed: _onPressLogin)
                   ],

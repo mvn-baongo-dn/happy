@@ -1,5 +1,3 @@
-library overlapped_carousel;
-
 import 'dart:ui';
 
 import 'package:flutter/material.dart';
@@ -10,13 +8,13 @@ class CustomOverlappedItem extends StatefulWidget {
   final int length;
   final Function(int) onClicked;
   final int? currentIndex;
-  final List<District> district;
+  final List<District> districts;
 
   const CustomOverlappedItem({
     super.key,
     required this.length,
     required this.onClicked,
-    required this.district,
+    required this.districts,
     this.currentIndex,
   });
 
@@ -56,7 +54,7 @@ class _CustomOverlappedItemState extends State<CustomOverlappedItem> {
               });
             },
             child: OverlappedItems(
-              districts: districts,
+              districts: widget.districts,
               cards: List.generate(
                 widget.length,
                 (index) => CardModel(
@@ -66,7 +64,7 @@ class _CustomOverlappedItemState extends State<CustomOverlappedItem> {
               centerIndex: currentIndex,
               maxWidth: constraints.maxWidth,
               maxHeight: constraints.maxHeight,
-              onClicked: widget.onClicked,
+              onClicked: (index) => widget.onClicked(index),
             ),
           );
         },
@@ -154,7 +152,7 @@ class OverlappedItems extends StatelessWidget {
     return transform;
   }
 
-  Widget _buildItem(CardModel item) {
+  Widget _buildItem(CardModel item, BuildContext context) {
     final int index = item.id;
     final width = getCardWidth(index) + 0;
     final height = maxHeight - 60 * (centerIndex - index).abs();
@@ -171,14 +169,19 @@ class OverlappedItems extends StatelessWidget {
         child: item.isCenter
             ? Stack(
                 children: [
-                  ClipRRect(
-                    borderRadius: BorderRadius.circular(15),
-                    child: Container(
-                      width: width.toDouble(),
-                      height: height > 0 ? height : 0,
-                      child: Image.asset(
-                        districts[index].image,
-                        fit: BoxFit.fill,
+                  GestureDetector(
+                    onTap: () => onClicked(item.id),
+                    child: ClipRRect(
+                      borderRadius: BorderRadius.circular(15),
+                      child: Container(
+                        width: width.toDouble(),
+                        height: height > 0 ? height : 0,
+                        decoration: new BoxDecoration(
+                          image: new DecorationImage(
+                            image: new ExactAssetImage(districts[index].image),
+                            fit: BoxFit.cover,
+                          ),
+                        ),
                       ),
                     ),
                   ),
@@ -233,7 +236,8 @@ class OverlappedItems extends StatelessWidget {
                     filter: new ImageFilter.blur(sigmaX: 0.1, sigmaY: 0.1),
                     child: new Container(
                       decoration: new BoxDecoration(
-                          color: Colors.black.withOpacity(0.15)),
+                        color: Colors.black.withOpacity(0.15),
+                      ),
                     ),
                   ),
                 ),
@@ -242,7 +246,10 @@ class OverlappedItems extends StatelessWidget {
     );
   }
 
-  List<Widget> _sortedStackWidgets(List<CardModel> widgets) {
+  List<Widget> _sortedStackWidgets(
+    List<CardModel> widgets,
+    BuildContext context,
+  ) {
     for (int i = 0; i < widgets.length; i++) {
       if (widgets[i].id == centerIndex) {
         widgets[i].zIndex = widgets.length.toDouble();
@@ -260,9 +267,7 @@ class OverlappedItems extends StatelessWidget {
     return widgets.map((e) {
       double distance = (centerIndex - e.id).abs();
       if (distance >= 0 && distance <= 3)
-        return _buildItem(
-          e,
-        );
+        return _buildItem(e, context);
       else
         return Container();
     }).toList();
@@ -274,7 +279,7 @@ class OverlappedItems extends StatelessWidget {
       child: Stack(
         alignment: AlignmentDirectional.center,
         clipBehavior: Clip.none,
-        children: _sortedStackWidgets(cards),
+        children: _sortedStackWidgets(cards, context),
       ),
     );
   }
@@ -286,6 +291,10 @@ class CardModel {
   final Widget? child;
   bool isCenter;
 
-  CardModel(
-      {required this.id, this.zIndex = 0.0, this.child, this.isCenter = false});
+  CardModel({
+    required this.id,
+    this.zIndex = 0.0,
+    this.child,
+    this.isCenter = false,
+  });
 }
