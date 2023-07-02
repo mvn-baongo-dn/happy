@@ -16,7 +16,7 @@ class EmailFormField extends StatelessWidget {
   @override
   Widget build(BuildContext context) => Container(
         decoration: BoxDecoration(
-          color: Colors.grey[200],
+          color: Theme.of(context).dialogBackgroundColor,
           borderRadius: BorderRadius.circular(8),
         ),
         padding: const EdgeInsets.symmetric(
@@ -24,13 +24,14 @@ class EmailFormField extends StatelessWidget {
           vertical: 8,
         ),
         child: TextField(
-            focusNode: emailFocusNode,
-            controller: emailController,
-            decoration: const InputDecoration(
-              border: InputBorder.none,
-              hintText: "Email",
-            ),
-            style: Theme.of(context).textTheme.bodyMedium,
-            onChanged: function),
+          focusNode: emailFocusNode,
+          controller: emailController,
+          decoration: const InputDecoration(
+            border: InputBorder.none,
+            hintText: "Email",
+          ),
+          style: Theme.of(context).textTheme.bodyMedium,
+          onChanged: function,
+        ),
       );
 }

@@ -26,18 +26,21 @@ class _ApiClient implements ApiClient {
     final _data = <String, dynamic>{};
     _data.addAll(loginRequestModel.toJson());
     final _result = await _dio.fetch<Map<String, dynamic>>(
-        _setStreamType<ApiResponseModel<LoginResponseModel>>(Options(
-      method: 'POST',
-      headers: _headers,
-      extra: _extra,
-    )
+      _setStreamType<ApiResponseModel<LoginResponseModel>>(
+        Options(
+          method: 'POST',
+          headers: _headers,
+          extra: _extra,
+        )
             .compose(
               _dio.options,
               '/login',
               queryParameters: queryParameters,
               data: _data,
             )
-            .copyWith(baseUrl: baseUrl ?? _dio.options.baseUrl)));
+            .copyWith(baseUrl: baseUrl ?? _dio.options.baseUrl),
+      ),
+    );
     final value = ApiResponseModel<LoginResponseModel>.fromJson(
       _result.data!,
       (json) => LoginResponseModel.fromJson(json as Map<String, dynamic>),
@@ -52,18 +55,21 @@ class _ApiClient implements ApiClient {
     final _headers = <String, dynamic>{};
     final _data = <String, dynamic>{};
     final _result = await _dio.fetch<Map<String, dynamic>>(
-        _setStreamType<ApiResponseModel<dynamic>>(Options(
-      method: 'POST',
-      headers: _headers,
-      extra: _extra,
-    )
+      _setStreamType<ApiResponseModel<dynamic>>(
+        Options(
+          method: 'POST',
+          headers: _headers,
+          extra: _extra,
+        )
             .compose(
               _dio.options,
               '/logout',
               queryParameters: queryParameters,
               data: _data,
             )
-            .copyWith(baseUrl: baseUrl ?? _dio.options.baseUrl)));
+            .copyWith(baseUrl: baseUrl ?? _dio.options.baseUrl),
+      ),
+    );
     final value = ApiResponseModel<dynamic>.fromJson(
       _result.data!,
       (json) => json as dynamic,

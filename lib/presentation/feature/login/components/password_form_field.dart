@@ -13,7 +13,7 @@ class PasswordFormField extends StatelessWidget {
   @override
   Widget build(BuildContext context) => Container(
         decoration: BoxDecoration(
-          color: Colors.grey[200],
+          color: Theme.of(context).dialogBackgroundColor,
           borderRadius: BorderRadius.circular(8),
         ),
         padding: const EdgeInsets.symmetric(
