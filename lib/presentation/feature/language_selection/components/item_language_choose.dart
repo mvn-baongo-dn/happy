@@ -15,11 +15,12 @@ class ItemLanguageChoose extends StatelessWidget {
     return Container(
       margin: EdgeInsets.only(top: 10, bottom: 80),
       decoration: BoxDecoration(
-          borderRadius: BorderRadius.circular(20),
-          border: Border.all(
-            width: 0.2,
-            color: Colors.black,
-          )),
+        borderRadius: BorderRadius.circular(20),
+        border: Border.all(
+          width: 0.2,
+          color: Colors.black,
+        ),
+      ),
       child: ListTile(
         title: Text(
           text,
