@@ -93,7 +93,7 @@ class _ExplorationTourismDetailPageState extends BasePageState<
 ///==========================================================================///
 extension _ExplorationTourismDetailPageBehavior
     on _ExplorationTourismDetailPageState {
-  void _onPressButton() {
-    //TODO: (remove) Example of a self-defined method
-  }
+  // void _onPressButton() {
+  //   //TODO: (remove) Example of a self-defined method
+  // }
 }
