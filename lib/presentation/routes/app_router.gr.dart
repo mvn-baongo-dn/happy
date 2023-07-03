@@ -45,6 +45,12 @@ abstract class _$AppRouter extends RootStackRouter {
         child: const LanguageSelectionPage(),
       );
     },
+    ExplorationTourismDetailRoute.name: (routeData) {
+      return AutoRoutePage<dynamic>(
+        routeData: routeData,
+        child: const ExplorationTourismDetailPage(),
+      );
+    },
   };
 }
 
@@ -114,6 +120,20 @@ class LanguageSelectionRoute extends PageRouteInfo<void> {
         );
 
   static const String name = 'LanguageSelectionRoute';
+
+  static const PageInfo<void> page = PageInfo<void>(name);
+}
+
+/// generated route for
+/// [ExplorationTourismDetailPage]
+class ExplorationTourismDetailRoute extends PageRouteInfo<void> {
+  const ExplorationTourismDetailRoute({List<PageRouteInfo>? children})
+      : super(
+          ExplorationTourismDetailRoute.name,
+          initialChildren: children,
+        );
+
+  static const String name = 'ExplorationTourismDetailRoute';
 
   static const PageInfo<void> page = PageInfo<void>(name);
 }

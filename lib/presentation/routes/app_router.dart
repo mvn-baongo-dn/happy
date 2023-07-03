@@ -2,6 +2,7 @@ import 'package:auto_route/auto_route.dart';
 import 'package:flutter/material.dart';
 import 'package:happy/presentation/routes/router_path.dart';
 
+import '../feature/exploration_tourism_detail/exploration_tourism_detail_page.dart';
 import '../feature/food_tourism/food_tourism_page.dart';
 import '../../injection/injector.dart';
 import '../../presentation/feature/home/home_page.dart';
@@ -32,6 +33,9 @@ class AppRouter extends _$AppRouter {
         ),
         AutoRoute(
           page: LanguageSelectionRoute.page,
+        ),
+        AutoRoute(
+          page: ExplorationTourismDetailRoute.page,
           initial: true,
         ),
       ];
