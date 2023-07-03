@@ -33,10 +33,10 @@ class AppRouter extends _$AppRouter {
         ),
         AutoRoute(
           page: LanguageSelectionRoute.page,
+          initial: true,
         ),
         AutoRoute(
           page: ExplorationTourismDetailRoute.page,
-          initial: true,
         ),
       ];
   static BuildContext get context =>

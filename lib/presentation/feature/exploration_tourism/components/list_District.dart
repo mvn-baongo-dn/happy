@@ -5,15 +5,17 @@ import '../../../components/custom_overlapped_item.dart';
 
 class ListDistrict extends StatelessWidget {
   const ListDistrict({
-    super.key,
+    required this.explorationDistrict,
     required this.screenWidth,
     required this.screenHeight,
     required this.onClick,
+    super.key,
   });
 
   final double screenWidth;
   final double screenHeight;
   final Function(int) onClick;
+  final List<District> explorationDistrict;
 
   @override
   Widget build(BuildContext context) {

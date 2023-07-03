@@ -1,5 +1,6 @@
 import 'package:auto_route/auto_route.dart';
 import 'package:flutter/material.dart';
+import 'package:happy/data/models/common/responses/district.dart';
 
 import '../../resources/resources.dart';
 import '../../routes/app_router.dart';
@@ -9,6 +10,7 @@ import './bloc/exploration_tourism_state.dart';
 import '../../core/base_page/base_page.dart';
 import 'components/item_recommend.dart';
 import 'components/list_District.dart';
+import 'components/title_widget.dart';
 
 /// Create at:   28/06/2023
 /// Page:        [ExplorationTourismPage]
@@ -38,15 +40,9 @@ class _ExplorationTourismPageState
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
-            Padding(
-              padding: const EdgeInsets.symmetric(horizontal: 20),
-              child: Text(
-                AppText.value.whereDoYouWantToGo,
-                style: TextStyle(
-                  fontWeight: FontWeight.bold,
-                  fontSize: 16,
-                ),
-              ),
+            TitleWidget(
+              text: AppText.value.whereDoYouWantToGo,
+              isLastWidget: false,
             ),
             SizedBox(
               height: 30,
@@ -54,26 +50,19 @@ class _ExplorationTourismPageState
             ListDistrict(
               screenWidth: screenWidth,
               screenHeight: screenHeight,
-              onClick: (index) => AutoRouter.of(context).replace(LoginRoute()),
+              explorationDistrict: explorationDistrict,
+              onClick: (index) => AutoRouter.of(context).replace(
+                ExplorationTourismDetailRoute(
+                  text: explorationDistrict[index].name,
+                ),
+              ),
             ),
             SizedBox(
               height: 50,
             ),
-            Padding(
-              padding: const EdgeInsets.symmetric(horizontal: 20),
-              child: Row(
-                children: [
-                  Text(
-                    AppText.value.interestingSpaces,
-                    style: TextStyle(
-                      fontWeight: FontWeight.bold,
-                      fontSize: 16,
-                    ),
-                  ),
-                  Spacer(),
-                  Text(AppText.value.seeAll)
-                ],
-              ),
+            TitleWidget(
+              text: AppText.value.interestingSpaces,
+              isLastWidget: true,
             ),
             SizedBox(
               height: 20,
