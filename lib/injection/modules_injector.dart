@@ -1,5 +1,6 @@
 import 'package:happy/presentation/feature/exploration_tourism/bloc/exploration_tourism_module.dart';
 import 'package:happy/presentation/feature/food_tourism/bloc/food_tourism_module.dart';
+import 'package:happy/presentation/feature/language_selection/bloc/language_selection_module.dart';
 
 import '../presentation/components/loading_wrapper/bloc/loading_wrapper_module.dart';
 import '../presentation/feature/home/bloc/home_page_module.dart';
@@ -22,6 +23,9 @@ class ModulesInjector {
 
     //FoodTourismModule page
     FoodTourismModule().register();
+
+    //LanguageSelectionModule page
+    LanguageSelectionModule().register();
 
     //ExplorationTourismModule page
     ExplorationTourismModule().register();
