@@ -1,7 +1,5 @@
 import 'package:auto_route/auto_route.dart';
 import 'package:flutter/material.dart';
-import 'package:happy/presentation/routes/router_path.dart';
-
 import '../../domain/use_cases/auth/get_access_token_local_use_case.dart';
 import '../feature/exploration_tourism_detail/exploration_tourism_detail_page.dart';
 import '../feature/food_tourism/food_tourism_page.dart';
@@ -28,7 +26,7 @@ class AppRouter extends _$AppRouter {
         AutoRoute(
           initial: true,
           // path: RouterPathConstants.home,
-          guards: [AuthGuard(value: 'bao')],
+          guards: [AuthGuard()],
           page: HomeRoute.page,
         ),
         AutoRoute(
@@ -48,8 +46,6 @@ class AppRouter extends _$AppRouter {
 }
 
 class AuthGuard extends AutoRouteGuard {
-  AuthGuard({required this.value});
-  final String? value;
   @override
   void onNavigation(NavigationResolver resolver, StackRouter router) async {
     final _getAccessTokenUseCase = injector.get<GetAccessTokenLocalUseCase>();
