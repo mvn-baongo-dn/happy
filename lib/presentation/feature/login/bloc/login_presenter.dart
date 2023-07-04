@@ -57,9 +57,9 @@ class LoginPresenter extends BasePresenter<LoginState> {
     );
     return response.data?.safe((data) {
       unawaited(
-        _saveAccessTokenUseCase.run(data.accessToken),
+        _saveAccessTokenUseCase.run('abcd'),
       );
-      return data;
+      return LoginResponseEntity(email: 'bao@gmail.com', accessToken: 'abc', refreshToken: 'abcd');
     });
   }
 }

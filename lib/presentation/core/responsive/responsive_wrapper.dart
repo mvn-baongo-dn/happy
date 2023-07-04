@@ -15,6 +15,6 @@ Widget getResponsiveWrapper(BuildContext context, Widget? widget) =>
         const ResponsiveBreakpoint.autoScale(2460, name: '4K'),
       ],
       background: Container(
-        color: const Color(0xFFF5F5F5),
+        color: const Color(0xFF0000),
       ),
     );

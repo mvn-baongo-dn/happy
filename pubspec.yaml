@@ -66,6 +66,7 @@ dev_dependencies:
   custom_lint_happy:
     path: ./custom_lint
   flutter_launcher_icons: ^0.13.1  
+  flutter_native_splash: ^2.3.1
 
 flutter_launcher_icons:
     android: "launcher_icon"

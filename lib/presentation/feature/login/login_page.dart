@@ -3,6 +3,8 @@ import 'package:flutter/material.dart';
 import 'package:happy/presentation/feature/login/components/login_button.dart';
 import 'package:rive/rive.dart';
 
+import '../../../domain/use_cases/auth/save_access_token_local_use_case.dart';
+import '../../../injection/injector.dart';
 import './bloc/login_presenter.dart';
 import './components/email_form_field.dart';
 import './components/password_form_field.dart';
@@ -159,24 +161,27 @@ class _LoginPageState extends BasePageState<LoginPage, LoginPresenter>
 extension _LoginPageBehavior on _LoginPageState {
   void _onPressLogin() async {
     emailFocusNode.unfocus();
-    passwordFocusNode.unfocus();
+    injector.get<SaveAccessTokenLocalUseCase>().run('abcddđ');
+    // passwordFocusNode.unfocus();
 
-    final email = emailController.text;
-    final password = passwordController.text;
-    presenter.onEmailChanged(email);
-    presenter.onPasswordChanged(password);
-
-    presenter
-        .onPressLogin()
-        .subscribeLoadingFullScreen(this)
-        .subscribeHandleError(
-          this,
-          onError: _handleOnErrorLogin,
-        )
-        .subscribeOnSuccess(
-          this,
-          success: _handleOnLoginSuccess,
-        );
+    // final email = emailController.text;
+    // final password = passwordController.text;
+    // presenter.onEmailChanged(email);
+    // presenter.onPasswordChanged(password);
+    // if (mounted) {
+    AutoRouter.of(context).replace(const HomeRoute());
+    // }
+    // presenter
+    //     .onPressLogin()
+    //     .subscribeLoadingFullScreen(this)
+    //     .subscribeHandleError(
+    //       this,
+    //       onError: _handleOnErrorLogin,
+    //     )
+    //     .subscribeOnSuccess(
+    //       this,
+    //       success: _handleOnLoginSuccess,
+    //     );
   }
 
   void _handleOnLoginSuccess(LoginResponseEntity? value) async {

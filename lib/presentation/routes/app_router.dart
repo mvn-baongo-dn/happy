@@ -2,6 +2,7 @@ import 'package:auto_route/auto_route.dart';
 import 'package:flutter/material.dart';
 import 'package:happy/presentation/routes/router_path.dart';
 
+import '../../domain/use_cases/auth/get_access_token_local_use_case.dart';
 import '../feature/exploration_tourism_detail/exploration_tourism_detail_page.dart';
 import '../feature/food_tourism/food_tourism_page.dart';
 import '../../injection/injector.dart';
@@ -17,15 +18,17 @@ class AppRouter extends _$AppRouter {
   @override
   List<AutoRoute> get routes => [
         AutoRoute(
-          path: RouterPathConstants.splash,
+          // path: RouterPathConstants.splash,
           page: SplashRoute.page,
         ),
         AutoRoute(
-          path: RouterPathConstants.login,
+          // path: RouterPathConstants.login,
           page: LoginRoute.page,
         ),
         AutoRoute(
-          path: RouterPathConstants.home,
+          initial: true,
+          // path: RouterPathConstants.home,
+          guards: [AuthGuard(value: 'bao')],
           page: HomeRoute.page,
         ),
         AutoRoute(
@@ -33,7 +36,7 @@ class AppRouter extends _$AppRouter {
         ),
         AutoRoute(
           page: LanguageSelectionRoute.page,
-          initial: true,
+          // initial: true,
         ),
         AutoRoute(
           page: ExplorationTourismDetailRoute.page,
@@ -42,4 +45,20 @@ class AppRouter extends _$AppRouter {
   static BuildContext get context =>
       // ignore: force_null_safety
       injector.get<AppRouter>().navigatorKey.currentContext!;
+}
+
+class AuthGuard extends AutoRouteGuard {
+  AuthGuard({required this.value});
+  final String? value;
+  @override
+  void onNavigation(NavigationResolver resolver, StackRouter router) async {
+    final _getAccessTokenUseCase = injector.get<GetAccessTokenLocalUseCase>();
+    if (_getAccessTokenUseCase.run() != null) {
+      resolver.next(true);
+    } else {
+      resolver.redirect(
+        LoginRoute(),
+      );
+    }
+  }
 }
