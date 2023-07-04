@@ -55,6 +55,7 @@ class AuthGuard extends AutoRouteGuard {
       resolver.redirect(
         LoginRoute(),
       );
+      resolver.nextOrBack();
     }
   }
 }

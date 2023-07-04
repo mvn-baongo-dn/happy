@@ -57,7 +57,7 @@ class LoginPresenter extends BasePresenter<LoginState> {
     );
     return response.data?.safe((data) {
       unawaited(
-        _saveAccessTokenUseCase.run(data.refreshToken),
+        _saveAccessTokenUseCase.run(data.accessToken),
       );
       return data;
     });
