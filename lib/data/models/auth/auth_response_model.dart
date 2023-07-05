@@ -1,17 +1,16 @@
 import 'package:json_annotation/json_annotation.dart';
-
-part 'login_response_model.g.dart';
+part 'auth_response_model.g.dart';
 
 @JsonSerializable()
-class LoginResponseModel {
-  LoginResponseModel({
+class AuthResponseModel {
+  AuthResponseModel({
     required this.email,
     required this.accessToken,
     required this.refreshToken,
   });
 
-  factory LoginResponseModel.fromJson(Map<String, dynamic> json) =>
-      _$LoginResponseModelFromJson(json);
+  factory AuthResponseModel.fromJson(Map<String, dynamic> json) =>
+      _$AuthResponseModelFromJson(json);
 
   @JsonKey(name: 'email')
   final String email;
@@ -22,5 +21,5 @@ class LoginResponseModel {
   @JsonKey(name: 'refresh_token')
   final String refreshToken;
 
-  Map<String, dynamic> toJson() => _$LoginResponseModelToJson(this);
+  Map<String, dynamic> toJson() => _$AuthResponseModelToJson(this);
 }

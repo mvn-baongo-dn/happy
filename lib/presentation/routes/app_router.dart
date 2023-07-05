@@ -1,5 +1,6 @@
 import 'package:auto_route/auto_route.dart';
 import 'package:flutter/material.dart';
+import 'package:happy/domain/use_cases/auth/get_app_setting_use_case.dart';
 import '../../domain/use_cases/auth/get_access_token_local_use_case.dart';
 import '../feature/exploration_tourism_detail/exploration_tourism_detail_page.dart';
 import '../feature/food_tourism/food_tourism_page.dart';
@@ -52,10 +53,17 @@ class AuthGuard extends AutoRouteGuard {
     if (_getAccessTokenUseCase.run() != null) {
       resolver.next(true);
     } else {
-      resolver.redirect(
-        LoginRoute(),
-      );
-      resolver.nextOrBack();
+      final appSettings = injector.get<GetAppSettingUseCase>();
+      final value = await appSettings.run();
+      if (value.hasOpenedOnboarding ?? false) {
+        resolver.redirect(
+          LoginRoute(),
+        );
+      } else {
+        resolver.redirect(
+          LanguageSelectionRoute(),
+        );
+      }
     }
   }
 }

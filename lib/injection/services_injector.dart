@@ -1,12 +1,14 @@
 import 'package:dio/dio.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
+import '../data/data_sources/local/persistent_storage/persistent_storage.dart';
+import '../data/data_sources/local/secure_storage/secure_storage.dart';
 import './injector.dart';
 import '../data/data_sources/http_client/api_client.dart';
 import '../data/data_sources/http_client/interceptor/auth_interceptor.dart';
 import '../data/data_sources/http_client/interceptor/logger_interceptor.dart';
 import '../data/data_sources/http_client/interceptor/retry_interceptor.dart';
-import '../data/data_sources/local_storage/share_preference_data_source.dart';
+import '../data/data_sources/local/persistent_storage/share_preference_data_source.dart';
 import '../presentation/core/app_lifecycle/app_lifecycle.dart';
 import '../presentation/routes/app_router.dart';
 import '../utilities/helpers/app_helper/app_flavor_helper.dart';
@@ -50,6 +52,16 @@ class ServiceInjector {
     // AppLifecycle
     injector.registerLazySingleton<AppLifecycle>(
       () => AppLifecycle(),
+    );
+
+    //PersistentStorage
+    injector.registerLazySingleton<PersistentStorage>(
+      () => PersistentStorage(sharedPreferences),
+    );
+
+    //SecureStorage
+    injector.registerLazySingleton<SecureStorage>(
+      () => SecureStorage(),
     );
   }
 }

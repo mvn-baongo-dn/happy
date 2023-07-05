@@ -19,14 +19,14 @@ class _ApiClient implements ApiClient {
   String? baseUrl;
 
   @override
-  Future<ApiResponseModel<LoginResponseModel>> login(loginRequestModel) async {
+  Future<ApiResponseModel<AuthResponseModel>> login(loginRequestModel) async {
     const _extra = <String, dynamic>{};
     final queryParameters = <String, dynamic>{};
     final _headers = <String, dynamic>{};
     final _data = <String, dynamic>{};
     _data.addAll(loginRequestModel.toJson());
     final _result = await _dio.fetch<Map<String, dynamic>>(
-      _setStreamType<ApiResponseModel<LoginResponseModel>>(
+      _setStreamType<ApiResponseModel<AuthResponseModel>>(
         Options(
           method: 'POST',
           headers: _headers,
@@ -41,9 +41,9 @@ class _ApiClient implements ApiClient {
             .copyWith(baseUrl: baseUrl ?? _dio.options.baseUrl),
       ),
     );
-    final value = ApiResponseModel<LoginResponseModel>.fromJson(
+    final value = ApiResponseModel<AuthResponseModel>.fromJson(
       _result.data!,
-      (json) => LoginResponseModel.fromJson(json as Map<String, dynamic>),
+      (json) => AuthResponseModel.fromJson(json as Map<String, dynamic>),
     );
     return value;
   }
@@ -73,6 +73,38 @@ class _ApiClient implements ApiClient {
     final value = ApiResponseModel<dynamic>.fromJson(
       _result.data!,
       (json) => json as dynamic,
+    );
+    return value;
+  }
+
+  @override
+  Future<ApiResponseModel<RefreshTokenRequestModel>> refreshToken(
+    refreshTokenRequest,
+  ) async {
+    const _extra = <String, dynamic>{};
+    final queryParameters = <String, dynamic>{};
+    final _headers = <String, dynamic>{};
+    final _data = <String, dynamic>{};
+    _data.addAll(refreshTokenRequest.toJson());
+    final _result = await _dio.fetch<Map<String, dynamic>>(
+      _setStreamType<ApiResponseModel<RefreshTokenRequestModel>>(
+        Options(
+          method: 'POST',
+          headers: _headers,
+          extra: _extra,
+        )
+            .compose(
+              _dio.options,
+              '/refresh-token',
+              queryParameters: queryParameters,
+              data: _data,
+            )
+            .copyWith(baseUrl: baseUrl ?? _dio.options.baseUrl),
+      ),
+    );
+    final value = ApiResponseModel<RefreshTokenRequestModel>.fromJson(
+      _result.data!,
+      (json) => RefreshTokenRequestModel.fromJson(json as Map<String, dynamic>),
     );
     return value;
   }

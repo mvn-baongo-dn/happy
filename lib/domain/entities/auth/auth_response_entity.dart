@@ -1,5 +1,5 @@
-class LoginResponseEntity {
-  const LoginResponseEntity({
+class AuthResponseEntity {
+  const AuthResponseEntity({
     required this.email,
     required this.accessToken,
     required this.refreshToken,

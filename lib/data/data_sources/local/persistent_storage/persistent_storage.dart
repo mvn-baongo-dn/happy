@@ -1,17 +1,13 @@
 import 'package:shared_preferences/shared_preferences.dart';
 
-import './share_preference_key.dart';
+import '../../local_storage/share_preference_key.dart';
 
-class SharePreferenceDataSource {
-  SharePreferenceDataSource(this._preferences);
+abstract class PersistentStorageAbstract {}
+
+class PersistentStorage implements PersistentStorageAbstract {
+  PersistentStorage(this._preferences);
 
   final SharedPreferences _preferences;
-
-  Future<bool> setAccessToken(String token) => _preferences.setString(
-        SharePreferenceKey.accessToken,
-        token,
-      );
-
   Future<bool> setRefreshToken(String token) => _preferences.setString(
         SharePreferenceKey.refreshToken,
         token,
@@ -29,4 +25,12 @@ class SharePreferenceDataSource {
   String? getRefreshToken() => _preferences.getString(
         SharePreferenceKey.refreshToken,
       );
+
+  Future<void> setString({required String key, required String value}) {
+    return _preferences.setString(key, value);
+  }
+
+  String? getString({required String key}) {
+    return _preferences.getString(key);
+  }
 }

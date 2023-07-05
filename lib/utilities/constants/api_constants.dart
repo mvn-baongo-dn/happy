@@ -11,6 +11,7 @@ class ApiConstants {
   // Account
   static const String login = '/login';
   static const String logout = '/logout';
+  static const refreshToken = '/refresh-token';
 
   static const List<String> nonAuthenticatedPaths = [
     ApiConstants.login,

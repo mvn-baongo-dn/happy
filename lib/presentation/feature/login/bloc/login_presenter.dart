@@ -5,7 +5,7 @@ import 'package:flutter/material.dart';
 import './login_state.dart';
 import '../../../../domain/entities/account/email_entity.dart';
 import '../../../../domain/entities/account/login/login_request_entity.dart';
-import '../../../../domain/entities/account/login/login_response_entity.dart';
+import '../../../../domain/entities/auth/auth_response_entity.dart';
 import '../../../../domain/entities/account/password_entity.dart';
 import '../../../../domain/use_cases/auth/login_use_case.dart';
 import '../../../../domain/use_cases/auth/save_access_token_local_use_case.dart';
@@ -48,7 +48,7 @@ class LoginPresenter extends BasePresenter<LoginState> {
     );
   }
 
-  Future<LoginResponseEntity?> onPressLogin() async {
+  Future<AuthResponseEntity?> onPressLogin() async {
     final response = await _loginUseCase.run(
       LoginRequestEntity(
         email: state.email.value ?? '',

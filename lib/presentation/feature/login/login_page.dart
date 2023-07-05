@@ -6,7 +6,7 @@ import 'package:rive/rive.dart';
 import './bloc/login_presenter.dart';
 import './components/email_form_field.dart';
 import './components/password_form_field.dart';
-import '../../../domain/entities/account/login/login_response_entity.dart';
+import '../../../domain/entities/auth/auth_response_entity.dart';
 import '../../../utilities/extensions/extensions.dart';
 import '../../core/app_lifecycle/app_lifecycle_mixin.dart';
 import '../../core/base_page/base_page.dart';
@@ -179,7 +179,7 @@ extension _LoginPageBehavior on _LoginPageState {
         );
   }
 
-  void _handleOnLoginSuccess(LoginResponseEntity? value) async {
+  void _handleOnLoginSuccess(AuthResponseEntity? value) async {
     trigSuccess?.change(true);
     Future.delayed(Duration(seconds: 1));
     if (mounted) {
