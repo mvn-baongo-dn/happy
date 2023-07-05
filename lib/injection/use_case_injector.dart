@@ -39,7 +39,7 @@ class UseCaseInjector {
       () => GetAppSettingUseCase(),
     );
 
-     injector.registerLazySingleton<SetLanguageUseCase>(
+    injector.registerLazySingleton<SetLanguageUseCase>(
       () => SetLanguageUseCase(),
     );
   }

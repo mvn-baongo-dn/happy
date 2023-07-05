@@ -10,8 +10,8 @@ import './language_selection_state.dart';
 
 class LanguageSelectionPresenter extends BasePresenter<LanguageSelectionState> {
   LanguageSelectionPresenter({
-   required this.setLanguageUseCase,
-   required this.setHasOpenedOnboardingUseCase, 
+    required this.setLanguageUseCase,
+    required this.setHasOpenedOnboardingUseCase,
     @visibleForTesting LanguageSelectionState? state,
   }) : super(state ?? LanguageSelectionState.initial());
 
@@ -30,7 +30,7 @@ class LanguageSelectionPresenter extends BasePresenter<LanguageSelectionState> {
   Future<void> setLanguage() async {
     await _setHasOpenedOnboarding();
     await _setLanguage(state.language.locale);
-     _locale.setLocale();
+    _locale.setLocale();
   }
 
   Future<void> _setHasOpenedOnboarding() async {

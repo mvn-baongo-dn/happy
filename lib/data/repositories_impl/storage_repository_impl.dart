@@ -43,10 +43,11 @@ class StorageRepositoryImpl implements StorageRepository {
     );
     return _setAppSettings(newAppSettings);
   }
-    @override
+
+  @override
   Future<void> setLanguage(Locale localeLanguage) async {
     final newAppSettings = (await getAppSettings()).copyWith(
-     locale: localeLanguage.toString()
+      locale: localeLanguage.toString(),
     );
     return _setAppSettings(newAppSettings);
   }
