@@ -9,6 +9,7 @@ part 'app_settings.g.dart';
 class AppSettings with _$AppSettings {
   const factory AppSettings({
     bool? hasOpenedOnboarding,
+    String? locale,
   }) = _AppSettings;
 
   const AppSettings._();

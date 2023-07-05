@@ -21,6 +21,7 @@ AppSettings _$AppSettingsFromJson(Map<String, dynamic> json) {
 /// @nodoc
 mixin _$AppSettings {
   bool? get hasOpenedOnboarding => throw _privateConstructorUsedError;
+  String? get locale => throw _privateConstructorUsedError;
 
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
   @JsonKey(ignore: true)
@@ -34,7 +35,7 @@ abstract class $AppSettingsCopyWith<$Res> {
           AppSettings value, $Res Function(AppSettings) then) =
       _$AppSettingsCopyWithImpl<$Res, AppSettings>;
   @useResult
-  $Res call({bool? hasOpenedOnboarding});
+  $Res call({bool? hasOpenedOnboarding, String? locale});
 }
 
 /// @nodoc
@@ -51,12 +52,17 @@ class _$AppSettingsCopyWithImpl<$Res, $Val extends AppSettings>
   @override
   $Res call({
     Object? hasOpenedOnboarding = freezed,
+    Object? locale = freezed,
   }) {
     return _then(_value.copyWith(
       hasOpenedOnboarding: freezed == hasOpenedOnboarding
           ? _value.hasOpenedOnboarding
           : hasOpenedOnboarding // ignore: cast_nullable_to_non_nullable
               as bool?,
+      locale: freezed == locale
+          ? _value.locale
+          : locale // ignore: cast_nullable_to_non_nullable
+              as String?,
     ) as $Val);
   }
 }
@@ -69,7 +75,7 @@ abstract class _$$_AppSettingsCopyWith<$Res>
       __$$_AppSettingsCopyWithImpl<$Res>;
   @override
   @useResult
-  $Res call({bool? hasOpenedOnboarding});
+  $Res call({bool? hasOpenedOnboarding, String? locale});
 }
 
 /// @nodoc
@@ -84,12 +90,17 @@ class __$$_AppSettingsCopyWithImpl<$Res>
   @override
   $Res call({
     Object? hasOpenedOnboarding = freezed,
+    Object? locale = freezed,
   }) {
     return _then(_$_AppSettings(
       hasOpenedOnboarding: freezed == hasOpenedOnboarding
           ? _value.hasOpenedOnboarding
           : hasOpenedOnboarding // ignore: cast_nullable_to_non_nullable
               as bool?,
+      locale: freezed == locale
+          ? _value.locale
+          : locale // ignore: cast_nullable_to_non_nullable
+              as String?,
     ));
   }
 }
@@ -97,17 +108,19 @@ class __$$_AppSettingsCopyWithImpl<$Res>
 /// @nodoc
 @JsonSerializable()
 class _$_AppSettings extends _AppSettings with DiagnosticableTreeMixin {
-  const _$_AppSettings({this.hasOpenedOnboarding}) : super._();
+  const _$_AppSettings({this.hasOpenedOnboarding, this.locale}) : super._();
 
   factory _$_AppSettings.fromJson(Map<String, dynamic> json) =>
       _$$_AppSettingsFromJson(json);
 
   @override
   final bool? hasOpenedOnboarding;
+  @override
+  final String? locale;
 
   @override
   String toString({DiagnosticLevel minLevel = DiagnosticLevel.info}) {
-    return 'AppSettings(hasOpenedOnboarding: $hasOpenedOnboarding)';
+    return 'AppSettings(hasOpenedOnboarding: $hasOpenedOnboarding, locale: $locale)';
   }
 
   @override
@@ -115,7 +128,8 @@ class _$_AppSettings extends _AppSettings with DiagnosticableTreeMixin {
     super.debugFillProperties(properties);
     properties
       ..add(DiagnosticsProperty('type', 'AppSettings'))
-      ..add(DiagnosticsProperty('hasOpenedOnboarding', hasOpenedOnboarding));
+      ..add(DiagnosticsProperty('hasOpenedOnboarding', hasOpenedOnboarding))
+      ..add(DiagnosticsProperty('locale', locale));
   }
 
   @override
@@ -124,12 +138,13 @@ class _$_AppSettings extends _AppSettings with DiagnosticableTreeMixin {
         (other.runtimeType == runtimeType &&
             other is _$_AppSettings &&
             (identical(other.hasOpenedOnboarding, hasOpenedOnboarding) ||
-                other.hasOpenedOnboarding == hasOpenedOnboarding));
+                other.hasOpenedOnboarding == hasOpenedOnboarding) &&
+            (identical(other.locale, locale) || other.locale == locale));
   }
 
   @JsonKey(ignore: true)
   @override
-  int get hashCode => Object.hash(runtimeType, hasOpenedOnboarding);
+  int get hashCode => Object.hash(runtimeType, hasOpenedOnboarding, locale);
 
   @JsonKey(ignore: true)
   @override
@@ -146,8 +161,8 @@ class _$_AppSettings extends _AppSettings with DiagnosticableTreeMixin {
 }
 
 abstract class _AppSettings extends AppSettings {
-  const factory _AppSettings({final bool? hasOpenedOnboarding}) =
-      _$_AppSettings;
+  const factory _AppSettings(
+      {final bool? hasOpenedOnboarding, final String? locale}) = _$_AppSettings;
   const _AppSettings._() : super._();
 
   factory _AppSettings.fromJson(Map<String, dynamic> json) =
@@ -155,6 +170,8 @@ abstract class _AppSettings extends AppSettings {
 
   @override
   bool? get hasOpenedOnboarding;
+  @override
+  String? get locale;
   @override
   @JsonKey(ignore: true)
   _$$_AppSettingsCopyWith<_$_AppSettings> get copyWith =>

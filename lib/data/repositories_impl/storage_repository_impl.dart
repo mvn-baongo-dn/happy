@@ -1,4 +1,5 @@
 import 'dart:convert';
+import 'dart:ui';
 
 import 'package:happy/data/models/app_settings/app_settings.dart';
 
@@ -39,6 +40,13 @@ class StorageRepositoryImpl implements StorageRepository {
   Future<void> setHasOpenedOnboarding() async {
     final newAppSettings = (await getAppSettings()).copyWith(
       hasOpenedOnboarding: true,
+    );
+    return _setAppSettings(newAppSettings);
+  }
+    @override
+  Future<void> setLanguage(Locale localeLanguage) async {
+    final newAppSettings = (await getAppSettings()).copyWith(
+     locale: localeLanguage.toString()
     );
     return _setAppSettings(newAppSettings);
   }

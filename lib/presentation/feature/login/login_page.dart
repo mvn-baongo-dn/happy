@@ -1,13 +1,15 @@
 import 'package:auto_route/auto_route.dart';
 import 'package:flutter/material.dart';
 import 'package:happy/presentation/feature/login/components/login_button.dart';
+import 'package:happy/utilities/extensions/extensions.dart';
 import 'package:rive/rive.dart';
 
+import '../../resources/resources.dart';
 import './bloc/login_presenter.dart';
 import './components/email_form_field.dart';
 import './components/password_form_field.dart';
 import '../../../domain/entities/auth/auth_response_entity.dart';
-import '../../../utilities/extensions/extensions.dart';
+
 import '../../core/app_lifecycle/app_lifecycle_mixin.dart';
 import '../../core/base_page/base_page.dart';
 
@@ -84,7 +86,7 @@ class _LoginPageState extends BasePageState<LoginPage, LoginPresenter>
               ),
               const SizedBox(height: 32),
               Text(
-                "Chào mừng bạn trở lại",
+                AppText.value.welcome,
                 style: Theme.of(context).textTheme.headlineMedium,
                 textAlign: TextAlign.center,
               ),

@@ -1,5 +1,6 @@
 import 'package:happy/domain/use_cases/auth/get_app_setting_use_case.dart';
 import 'package:happy/domain/use_cases/auth/set_has_opened_onboarding_use_case.dart';
+import 'package:happy/domain/use_cases/auth/set_language_use_case.dart';
 
 import './injector.dart';
 import '../domain/use_cases/auth/clear_auth_local_use_case.dart';
@@ -36,6 +37,10 @@ class UseCaseInjector {
 
     injector.registerLazySingleton<GetAppSettingUseCase>(
       () => GetAppSettingUseCase(),
+    );
+
+     injector.registerLazySingleton<SetLanguageUseCase>(
+      () => SetLanguageUseCase(),
     );
   }
 }

@@ -3,6 +3,8 @@
 // import '../../model/app_settings/app_settings.dart';
 // import '../../model/movie/movie.dart';
 
+import 'dart:ui';
+
 import '../../data/models/app_settings/app_settings.dart';
 
 abstract class StorageRepository {
@@ -10,6 +12,7 @@ abstract class StorageRepository {
   // Future<void> changeMovie(Movie movie, MoviesType moviesType);
   Future<AppSettings> getAppSettings();
   Future<void> setHasOpenedOnboarding();
+  Future<void> setLanguage(Locale locale);
   // Future<AppAuth> getAppAuth();
   // Future<List<Movie>> getMovies(MoviesType moviesType);
   Future<void> setFcmToken(String fcmToken);

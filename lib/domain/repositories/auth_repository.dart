@@ -22,5 +22,6 @@ abstract class AuthRepository {
   String? getRefreshTokenFromLocal();
 
   Future<ApiResponse<AuthResponseEntity>> refreshToken(
-      RefreshTokenRequestEntity email);
+    RefreshTokenRequestEntity email,
+  );
 }
