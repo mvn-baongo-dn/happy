@@ -8,7 +8,9 @@ import '../../injection/injector.dart';
 import '../../presentation/feature/home/home_page.dart';
 import '../../presentation/feature/login/login_page.dart';
 import '../../presentation/feature/splash/splash_page.dart';
+import '../feature/food_tourism_detail/food_tourism_detail_page.dart';
 import '../feature/language_selection/language_selection_page.dart';
+import '../feature/profile/profile_page.dart';
 
 part 'app_router.gr.dart';
 
@@ -39,6 +41,12 @@ class AppRouter extends _$AppRouter {
         ),
         AutoRoute(
           page: ExplorationTourismDetailRoute.page,
+        ),
+        AutoRoute(
+          page: ProfileRoute.page,
+        ),
+        AutoRoute(
+          page: FoodTourismDetailRoute.page,
         ),
       ];
   static BuildContext get context =>

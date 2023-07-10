@@ -1,9 +1,11 @@
-import 'package:auto_route/annotations.dart';
+import 'package:auto_route/auto_route.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:happy/domain/use_cases/auth/clear_auth_local_use_case.dart';
 import 'package:happy/presentation/feature/exploration_tourism/exploration_tourism_page.dart';
 import 'package:happy/presentation/feature/food_tourism/food_tourism_page.dart';
 import 'package:happy/presentation/resources/resources.dart';
+import 'package:happy/presentation/routes/app_router.dart';
 import '../../components/sliver_app_bar_button.dart';
 import '../../core/base_page/base_page.dart';
 import 'bloc/home_page_presenter.dart';
@@ -42,13 +44,14 @@ class _HomePageState extends BasePageState<HomePage, HomePagePresenter>
 
   @override
   Widget buildBody(BuildContext context) {
-    return BlocConsumer<HomePagePresenter, HomePageState>(
+    return BlocBuilder<HomePagePresenter, HomePageState>(
       bloc: presenter,
       builder: (context, state) => SafeArea(
         child: NestedScrollView(
           controller: _scrollController,
           headerSliverBuilder: (context, headerSliverBuilder) => [
             SliverAppBar(
+              centerTitle: true,
               elevation: 0,
               backgroundColor: Color(0xFF1E1F20),
               pinned: true,
@@ -70,7 +73,6 @@ class _HomePageState extends BasePageState<HomePage, HomePagePresenter>
           ),
         ),
       ),
-      listener: (context, state) {},
     );
   }
 
@@ -90,20 +92,21 @@ class _HomePageState extends BasePageState<HomePage, HomePagePresenter>
           width: 10,
         ),
         SliverAppBarButton(
+          onTap: () {
+            ClearAuthLocalUseCase().run();
+          },
           icon: Icons.arrow_back_ios_new,
         ),
       ],
     );
   }
 
-  Center _buildTitleSliverAppBar() {
-    return Center(
-      child: Text(
-        AppText.value.travel,
-        style: TextStyle(
-          fontSize: 30,
-          fontWeight: FontWeight.bold,
-        ),
+  Text _buildTitleSliverAppBar() {
+    return Text(
+      AppText.value.travel,
+      style: TextStyle(
+        fontSize: 30,
+        fontWeight: FontWeight.bold,
       ),
     );
   }
@@ -112,6 +115,14 @@ class _HomePageState extends BasePageState<HomePage, HomePagePresenter>
     return [
       SliverAppBarButton(
         icon: Icons.notifications,
+        onTap: () {},
+      ),
+      SizedBox(
+        width: 10,
+      ),
+      SliverAppBarButton(
+        icon: Icons.person,
+        onTap: () => AutoRouter.of(context).push(ProfileRoute()),
       ),
       SizedBox(
         width: 10,

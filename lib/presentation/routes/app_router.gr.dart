@@ -46,6 +46,12 @@ abstract class _$AppRouter extends RootStackRouter {
         child: const FoodTourismPage(),
       );
     },
+    ProfileRoute.name: (routeData) {
+      return AutoRoutePage<dynamic>(
+        routeData: routeData,
+        child: const ProfilePage(),
+      );
+    },
     LoginRoute.name: (routeData) {
       return AutoRoutePage<dynamic>(
         routeData: routeData,
@@ -56,6 +62,19 @@ abstract class _$AppRouter extends RootStackRouter {
       return AutoRoutePage<dynamic>(
         routeData: routeData,
         child: const LanguageSelectionPage(),
+      );
+    },
+    FoodTourismDetailRoute.name: (routeData) {
+      final pathParams = routeData.inheritedPathParams;
+      final args = routeData.argsAs<FoodTourismDetailRouteArgs>(
+          orElse: () =>
+              FoodTourismDetailRouteArgs(text: pathParams.getString('text')));
+      return AutoRoutePage<dynamic>(
+        routeData: routeData,
+        child: FoodTourismDetailPage(
+          text: args.text,
+          key: args.key,
+        ),
       );
     },
   };
@@ -144,6 +163,20 @@ class FoodTourismRoute extends PageRouteInfo<void> {
 }
 
 /// generated route for
+/// [ProfilePage]
+class ProfileRoute extends PageRouteInfo<void> {
+  const ProfileRoute({List<PageRouteInfo>? children})
+      : super(
+          ProfileRoute.name,
+          initialChildren: children,
+        );
+
+  static const String name = 'ProfileRoute';
+
+  static const PageInfo<void> page = PageInfo<void>(name);
+}
+
+/// generated route for
 /// [LoginPage]
 class LoginRoute extends PageRouteInfo<void> {
   const LoginRoute({List<PageRouteInfo>? children})
@@ -169,4 +202,43 @@ class LanguageSelectionRoute extends PageRouteInfo<void> {
   static const String name = 'LanguageSelectionRoute';
 
   static const PageInfo<void> page = PageInfo<void>(name);
+}
+
+/// generated route for
+/// [FoodTourismDetailPage]
+class FoodTourismDetailRoute extends PageRouteInfo<FoodTourismDetailRouteArgs> {
+  FoodTourismDetailRoute({
+    required String text,
+    Key? key,
+    List<PageRouteInfo>? children,
+  }) : super(
+          FoodTourismDetailRoute.name,
+          args: FoodTourismDetailRouteArgs(
+            text: text,
+            key: key,
+          ),
+          rawPathParams: {'text': text},
+          initialChildren: children,
+        );
+
+  static const String name = 'FoodTourismDetailRoute';
+
+  static const PageInfo<FoodTourismDetailRouteArgs> page =
+      PageInfo<FoodTourismDetailRouteArgs>(name);
+}
+
+class FoodTourismDetailRouteArgs {
+  const FoodTourismDetailRouteArgs({
+    required this.text,
+    this.key,
+  });
+
+  final String text;
+
+  final Key? key;
+
+  @override
+  String toString() {
+    return 'FoodTourismDetailRouteArgs{text: $text, key: $key}';
+  }
 }
