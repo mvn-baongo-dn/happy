@@ -46,7 +46,7 @@ class _LanguageSelectionPageState
         elevation: 0,
         backgroundColor: Color(0xFFF2F2F6),
         title: const Text(
-          'Chọn ngôn ngữ',
+          'Select language',
           style: TextStyle(
             color: Colors.black,
           ),
@@ -70,13 +70,13 @@ class _LanguageSelectionPageState
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
                   ItemTitle(
-                    text: 'NGÔN NGỮ',
+                    text: 'LANGUAGE',
                   ),
                   ItemLanguageChoose(
                     text: state.language.name,
                     onTap: () => _onPressLanguage(),
                   ),
-                  ItemTitle(text: 'LỰA CHỌN NGÔN NGỮ'),
+                  ItemTitle(text: 'LANGUAGE SELECTION'),
                   SizedBox(
                     height: 10,
                   ),
