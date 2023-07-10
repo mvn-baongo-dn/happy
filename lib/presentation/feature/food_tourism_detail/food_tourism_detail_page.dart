@@ -78,5 +78,4 @@ class _FoodTourismDetailPageState
 ///==========================================================================///
 ///=> Behavior of the [FoodTourismDetailPage]
 ///==========================================================================///
-extension _FoodTourismDetailPageBehavior on _FoodTourismDetailPageState {
-}
+extension _FoodTourismDetailPageBehavior on _FoodTourismDetailPageState {}

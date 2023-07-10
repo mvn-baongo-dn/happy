@@ -144,5 +144,4 @@ class _ProfilePageState extends BasePageState<ProfilePage, ProfilePresenter>
 ///==========================================================================///
 ///=> Behavior of the [ProfilePage]
 ///==========================================================================///
-extension _ProfilePageBehavior on _ProfilePageState {
-}
+extension _ProfilePageBehavior on _ProfilePageState {}
