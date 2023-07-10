@@ -2,6 +2,7 @@ import 'package:happy/presentation/feature/exploration_tourism/bloc/exploration_
 import 'package:happy/presentation/feature/exploration_tourism_detail/bloc/exploration_tourism_detail_module.dart';
 import 'package:happy/presentation/feature/food_tourism/bloc/food_tourism_module.dart';
 import 'package:happy/presentation/feature/language_selection/bloc/language_selection_module.dart';
+import 'package:happy/presentation/feature/profile/bloc/profile_module.dart';
 
 import '../presentation/components/loading_wrapper/bloc/loading_wrapper_module.dart';
 import '../presentation/feature/home/bloc/home_page_module.dart';
@@ -33,5 +34,8 @@ class ModulesInjector {
 
     //ExplorationTourismModule page
     ExplorationTourismDetailModule().register();
+
+    //ProfileModule page
+    ProfileModule().register();
   }
 }
