@@ -1,4 +1,4 @@
-import 'package:auto_route/annotations.dart';
+import 'package:auto_route/auto_route.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:happy/presentation/feature/exploration_tourism/exploration_tourism_page.dart';
@@ -6,6 +6,7 @@ import 'package:happy/presentation/feature/food_tourism/food_tourism_page.dart';
 import 'package:happy/presentation/resources/resources.dart';
 import '../../components/sliver_app_bar_button.dart';
 import '../../core/base_page/base_page.dart';
+import '../../routes/app_router.dart';
 import 'bloc/home_page_presenter.dart';
 import 'bloc/home_page_state.dart';
 import 'components/tab_bar_home.dart';
@@ -90,6 +91,7 @@ class _HomePageState extends BasePageState<HomePage, HomePagePresenter>
           width: 10,
         ),
         SliverAppBarButton(
+          onTap: () {},
           icon: Icons.arrow_back_ios_new,
         ),
       ],
@@ -111,7 +113,15 @@ class _HomePageState extends BasePageState<HomePage, HomePagePresenter>
   List<Widget> _buildActionSliverAppBar() {
     return [
       SliverAppBarButton(
+        onTap: () {},
         icon: Icons.notifications,
+      ),
+      SizedBox(
+        width: 10,
+      ),
+      SliverAppBarButton(
+        onTap: () => AutoRouter.of(context).replace(ProfileRoute()),
+        icon: Icons.person,
       ),
       SizedBox(
         width: 10,

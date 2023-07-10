@@ -81,6 +81,7 @@ class _ExplorationTourismDetailPageState extends BasePageState<
           width: 10,
         ),
         SliverAppBarButton(
+          onTap: () {},
           icon: Icons.arrow_back_ios_new,
         ),
       ],

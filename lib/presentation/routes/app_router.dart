@@ -9,6 +9,7 @@ import '../../presentation/feature/home/home_page.dart';
 import '../../presentation/feature/login/login_page.dart';
 import '../../presentation/feature/splash/splash_page.dart';
 import '../feature/language_selection/language_selection_page.dart';
+import '../feature/profile/profile_page.dart';
 
 part 'app_router.gr.dart';
 
@@ -27,17 +28,21 @@ class AppRouter extends _$AppRouter {
         AutoRoute(
           path: RouterPathConstants.home,
           page: HomeRoute.page,
+          initial: true,
         ),
         AutoRoute(
           page: FoodTourismRoute.page,
         ),
         AutoRoute(
           page: LanguageSelectionRoute.page,
-          initial: true,
         ),
         AutoRoute(
           page: ExplorationTourismDetailRoute.page,
         ),
+        AutoRoute(
+          path: RouterPathConstants.profile,
+          page: ProfileRoute.page,
+        )
       ];
   static BuildContext get context =>
       // ignore: force_null_safety

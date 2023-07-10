@@ -4,15 +4,17 @@ class SliverAppBarButton extends StatelessWidget {
   const SliverAppBarButton({
     required this.icon,
     super.key,
+    required this.onTap,
   });
   final IconData icon;
+  final Function() onTap;
 
   @override
   Widget build(BuildContext context) {
     return Center(
       child: InkWell(
         borderRadius: BorderRadius.circular(15),
-        onTap: () {},
+        onTap: onTap,
         child: Container(
           width: 45,
           height: 45,
