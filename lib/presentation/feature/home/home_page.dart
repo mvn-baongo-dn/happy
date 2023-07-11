@@ -5,7 +5,6 @@ import 'package:happy/domain/use_cases/auth/clear_auth_local_use_case.dart';
 import 'package:happy/presentation/feature/exploration_tourism/exploration_tourism_page.dart';
 import 'package:happy/presentation/feature/food_tourism/food_tourism_page.dart';
 import 'package:happy/presentation/resources/resources.dart';
-import 'package:happy/presentation/routes/app_router.dart';
 import '../../components/sliver_app_bar_button.dart';
 import '../../core/base_page/base_page.dart';
 import 'bloc/home_page_presenter.dart';
@@ -113,22 +112,70 @@ class _HomePageState extends BasePageState<HomePage, HomePagePresenter>
 
   List<Widget> _buildActionSliverAppBar() {
     return [
-      SliverAppBarButton(
-        icon: Icons.notifications,
-        onTap: () {},
-      ),
-      SizedBox(
-        width: 10,
-      ),
-      SliverAppBarButton(
-        icon: Icons.person,
-        onTap: () => AutoRouter.of(context).push(ProfileRoute()),
+      Builder(
+        builder: (context) => SliverAppBarButton(
+          icon: Icons.settings,
+          onTap: () => Scaffold.of(context).openEndDrawer(),
+        ),
       ),
       SizedBox(
         width: 10,
       ),
     ];
   }
+
+  @override
+  Widget? buildEndDrawer(BuildContext context) => Container(
+        width: MediaQuery.of(context).size.width * 0.5,
+        child: Drawer(
+          child: ListView(
+            // Important: Remove any padding from the ListView.
+            padding: EdgeInsets.zero,
+            children: [
+              UserAccountsDrawerHeader(
+                otherAccountsPictures: [
+                  ...List.generate(2, (index) => CircleAvatar())
+                ],
+
+                currentAccountPictureSize: const Size.square(72.0),
+                // <-- SEE HERE
+                decoration: BoxDecoration(color: const Color(0xff764abc)),
+                accountName: Text(
+                  "Pinkesh Darji",
+                  style: TextStyle(
+                    fontWeight: FontWeight.bold,
+                  ),
+                ),
+                accountEmail: Text(
+                  "pinkesh.earth@gmail.com",
+                  style: TextStyle(
+                    fontWeight: FontWeight.bold,
+                  ),
+                ),
+                currentAccountPicture: CircleAvatar(),
+              ),
+              ListTile(
+                leading: Icon(
+                  Icons.home,
+                ),
+                title: const Text('Page 1'),
+                onTap: () {
+                  Navigator.pop(context);
+                },
+              ),
+              ListTile(
+                leading: Icon(
+                  Icons.train,
+                ),
+                title: const Text('Page 2'),
+                onTap: () {
+                  Navigator.pop(context);
+                },
+              ),
+            ],
+          ),
+        ),
+      );
 
   @override
   void handlerFutureError(Object? error) {
