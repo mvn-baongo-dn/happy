@@ -66,7 +66,7 @@ List<District> foodDistrict = [
   District(
     id: 1,
     name: 'Sơn Trà',
-    slogan: 'Hòn Ngọc Xanh Thành Phố',
+    slogan: 'Bánh Canh Ruộng',
     image: 'assets/images/foods/banh-canh-ruong.jpg',
   ),
   District(

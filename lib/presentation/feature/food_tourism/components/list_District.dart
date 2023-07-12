@@ -1,6 +1,8 @@
 import 'dart:math';
 
+import 'package:auto_route/auto_route.dart';
 import 'package:flutter/material.dart';
+import 'package:happy/presentation/routes/app_router.dart';
 
 import '../../../../data/models/common/responses/district.dart';
 import '../../../components/custom_overlapped_item.dart';
@@ -24,14 +26,8 @@ class ListDistrict extends StatelessWidget {
         districts: foodDistrict,
         length: foodDistrict.length,
         onClicked: (index) {
-          ScaffoldMessenger.of(context).showSnackBar(
-            SnackBar(
-              content: Text(
-                "You clicked at $index",
-                style: TextStyle(color: Colors.white),
-              ),
-            ),
-          );
+          AutoRouter.of(context)
+              .push(FoodTourismDetailRoute(text: foodDistrict[index].name));
         },
       ),
     );

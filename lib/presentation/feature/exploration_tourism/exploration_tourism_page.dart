@@ -51,7 +51,7 @@ class _ExplorationTourismPageState
               screenWidth: screenWidth,
               screenHeight: screenHeight,
               explorationDistrict: explorationDistrict,
-              onClick: (index) => AutoRouter.of(context).replace(
+              onClick: (index) => AutoRouter.of(context).push(
                 ExplorationTourismDetailRoute(
                   text: explorationDistrict[index].name,
                 ),

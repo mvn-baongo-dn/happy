@@ -1,9 +1,11 @@
+import 'package:happy/domain/entities/account/refresh_token_request/refresh_token_request_entity.dart';
+
 import '../entities/account/login/login_request_entity.dart';
-import '../entities/account/login/login_response_entity.dart';
+import '../entities/auth/auth_response_entity.dart';
 import '../entities/core/api_response.dart';
 
 abstract class AuthRepository {
-  Future<ApiResponse<LoginResponseEntity>> login(
+  Future<ApiResponse<AuthResponseEntity>> login(
     LoginRequestEntity loginRequest,
   );
 
@@ -18,4 +20,8 @@ abstract class AuthRepository {
   String? getAccessTokenFromLocal();
 
   String? getRefreshTokenFromLocal();
+
+  Future<ApiResponse<AuthResponseEntity>> refreshToken(
+    RefreshTokenRequestEntity email,
+  );
 }

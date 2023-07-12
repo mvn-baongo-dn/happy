@@ -21,7 +21,9 @@ import 'components/list_District.dart';
 ///
 @RoutePage()
 class FoodTourismPage extends BasePage {
-  const FoodTourismPage({Key? key}) : super(key: key);
+  const FoodTourismPage({
+    Key? key,
+  }) : super(key: key);
 
   @override
   State<FoodTourismPage> createState() => _FoodTourismPageState();

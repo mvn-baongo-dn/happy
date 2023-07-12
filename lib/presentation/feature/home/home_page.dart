@@ -1,9 +1,11 @@
-import 'package:auto_route/annotations.dart';
+import 'package:auto_route/auto_route.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:happy/domain/use_cases/auth/clear_auth_local_use_case.dart';
 import 'package:happy/presentation/feature/exploration_tourism/exploration_tourism_page.dart';
 import 'package:happy/presentation/feature/food_tourism/food_tourism_page.dart';
 import 'package:happy/presentation/resources/resources.dart';
+import 'package:happy/presentation/routes/app_router.dart';
 import '../../components/sliver_app_bar_button.dart';
 import '../../core/base_page/base_page.dart';
 import 'bloc/home_page_presenter.dart';
@@ -42,13 +44,14 @@ class _HomePageState extends BasePageState<HomePage, HomePagePresenter>
 
   @override
   Widget buildBody(BuildContext context) {
-    return BlocConsumer<HomePagePresenter, HomePageState>(
+    return BlocBuilder<HomePagePresenter, HomePageState>(
       bloc: presenter,
       builder: (context, state) => SafeArea(
         child: NestedScrollView(
           controller: _scrollController,
           headerSliverBuilder: (context, headerSliverBuilder) => [
             SliverAppBar(
+              centerTitle: true,
               elevation: 0,
               backgroundColor: Color(0xFF1E1F20),
               pinned: true,
@@ -70,7 +73,6 @@ class _HomePageState extends BasePageState<HomePage, HomePagePresenter>
           ),
         ),
       ),
-      listener: (context, state) {},
     );
   }
 
@@ -90,34 +92,90 @@ class _HomePageState extends BasePageState<HomePage, HomePagePresenter>
           width: 10,
         ),
         SliverAppBarButton(
+          onTap: () {
+            ClearAuthLocalUseCase().run();
+          },
           icon: Icons.arrow_back_ios_new,
         ),
       ],
     );
   }
 
-  Center _buildTitleSliverAppBar() {
-    return Center(
-      child: Text(
-        AppText.value.travel,
-        style: TextStyle(
-          fontSize: 30,
-          fontWeight: FontWeight.bold,
-        ),
+  Text _buildTitleSliverAppBar() {
+    return Text(
+      AppText.value.travel,
+      style: TextStyle(
+        fontSize: 30,
+        fontWeight: FontWeight.bold,
       ),
     );
   }
 
   List<Widget> _buildActionSliverAppBar() {
     return [
-      SliverAppBarButton(
-        icon: Icons.notifications,
+      Builder(
+        builder: (context) => SliverAppBarButton(
+          icon: Icons.settings,
+          onTap: () => Scaffold.of(context).openEndDrawer(),
+        ),
       ),
       SizedBox(
         width: 10,
       ),
     ];
   }
+
+  @override
+  Widget? buildEndDrawer(BuildContext context) => Container(
+        width: MediaQuery.of(context).size.width * 0.5,
+        child: GestureDetector(
+          onTap: () => AutoRouter.of(context).push(ProfileRoute()),
+          child: Drawer(
+            child: ListView(
+              // Important: Remove any padding from the ListView.
+              padding: EdgeInsets.zero,
+              children: [
+                UserAccountsDrawerHeader(
+                  currentAccountPictureSize: const Size.square(72.0),
+                  // <-- SEE HERE
+                  decoration: BoxDecoration(color: const Color(0xff764abc)),
+                  accountName: Text(
+                    "Pinkesh Darji",
+                    style: TextStyle(
+                      fontWeight: FontWeight.bold,
+                    ),
+                  ),
+                  accountEmail: Text(
+                    "pinkesh.earth@gmail.com",
+                    style: TextStyle(
+                      fontWeight: FontWeight.bold,
+                    ),
+                  ),
+                  currentAccountPicture: CircleAvatar(),
+                ),
+                ListTile(
+                  leading: Icon(
+                    Icons.home,
+                  ),
+                  title: const Text('Page 1'),
+                  onTap: () {
+                    Navigator.pop(context);
+                  },
+                ),
+                ListTile(
+                  leading: Icon(
+                    Icons.train,
+                  ),
+                  title: const Text('Page 2'),
+                  onTap: () {
+                    Navigator.pop(context);
+                  },
+                ),
+              ],
+            ),
+          ),
+        ),
+      );
 
   @override
   void handlerFutureError(Object? error) {

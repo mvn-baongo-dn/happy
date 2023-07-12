@@ -1,3 +1,5 @@
+import 'package:happy/domain/use_cases/auth/get_app_setting_use_case.dart';
+
 import './locale_presenter.dart';
 import '../../../../injection/injector.dart';
 
@@ -8,7 +10,7 @@ class LocaleModule {
 
   LocalePresenter register() {
     injector.registerLazySingleton<LocalePresenter>(
-      () => LocalePresenter(),
+      () => LocalePresenter(injector.get<GetAppSettingUseCase>()),
     );
     return injector.get<LocalePresenter>();
   }

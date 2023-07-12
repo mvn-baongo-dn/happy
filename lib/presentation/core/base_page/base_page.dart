@@ -67,6 +67,8 @@ abstract class BasePageState<Page extends BasePage,
 
   Widget buildBody(BuildContext context);
 
+  Widget? buildEndDrawer(BuildContext context) => null;
+
   Widget buildPage(BuildContext context) => WillPopScope(
         onWillPop: onWillPop(),
         child: LoadingWrapper(
@@ -99,6 +101,7 @@ abstract class BasePageState<Page extends BasePage,
             resizeToAvoidBottomInset: resizeToAvoidBottomInset,
             appBar: buildAppBar(context),
             body: buildBody(context),
+            endDrawer: buildEndDrawer(context),
           ),
         ),
       );

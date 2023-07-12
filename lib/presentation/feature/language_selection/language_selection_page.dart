@@ -38,12 +38,15 @@ class _LanguageSelectionPageState
   }
 
   @override
+  // TODO: implement backgroundColor
+  Color? get backgroundColor => Color(0xFFF2F2F6);
+
+  @override
   PreferredSizeWidget? buildAppBar(BuildContext context) => AppBar(
         elevation: 0,
         backgroundColor: Color(0xFFF2F2F6),
-        //TODO: (remove) App bar of new page
         title: const Text(
-          'Chọn ngôn ngữ',
+          'Select language',
           style: TextStyle(
             color: Colors.black,
           ),
@@ -57,23 +60,23 @@ class _LanguageSelectionPageState
         bloc: presenter,
         buildWhen: (previous, current) => previous.language != current.language,
         builder: (context, state) {
-          return Container(
-            width: MediaQuery.of(context).size.width,
-            height: MediaQuery.of(context).size.height,
-            padding: EdgeInsets.symmetric(horizontal: 15, vertical: 20),
-            color: Color(0xFFF2F2F6),
+          return Padding(
+            padding: const EdgeInsets.symmetric(
+              horizontal: 15,
+              vertical: 20,
+            ),
             child: SingleChildScrollView(
               child: Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
                   ItemTitle(
-                    text: 'NGÔN NGỮ',
+                    text: 'LANGUAGE',
                   ),
                   ItemLanguageChoose(
                     text: state.language.name,
                     onTap: () => _onPressLanguage(),
                   ),
-                  ItemTitle(text: 'LỰA CHỌN NGÔN NGỮ'),
+                  ItemTitle(text: 'LANGUAGE SELECTION'),
                   SizedBox(
                     height: 10,
                   ),
