@@ -49,7 +49,7 @@ class _MenuPageState extends BasePageState<MenuPage, MenuPresenter> {
 ///=> Behavior of the [MenuPage]
 ///==========================================================================///
 extension _MenuPageBehavior on _MenuPageState {
-  void _onPressButton() {
-    //TODO: (remove) Example of a self-defined method
-  }
+  // void _onPressButton() {
+  //   //TODO: (remove) Example of a self-defined method
+  // }
 }
