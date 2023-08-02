@@ -30,7 +30,7 @@ dependencies:
 
   # Utility
   device_info_plus: ^8.0.0
-  package_info_plus: ^3.0.2
+  package_info_plus: ^4.1.0
 
   # Persistence
   shared_preferences: ^2.0.15
